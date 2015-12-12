@@ -11,3 +11,11 @@ Category.create([
   {name: 'arithmetics'},
   {name: 'functions'},
   ])
+
+add    = Skill.create({name: 'Add to numbers'})
+shapes = Skill.create({name: 'Know the most common shapes'})
+linear = Skill.create({name: 'Uses linear functions'})
+
+
+fac_1 = Factory.create({name: 'first_factory'})
+fac_1.skills = [add, shapes, linear]
