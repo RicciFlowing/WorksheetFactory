@@ -20,3 +20,7 @@ add.questions = Question.create([{text:'2+3', solution: '5'}, {text:'4+13', solu
 
 fac_1 = Factory.create({name: 'first_factory'})
 fac_1.skills = [add, shapes, linear]
+
+worksheet = Worksheet.create({title:'First worksheet'})
+worksheet.factory   = fac_1
+worksheet.questions =  add.questions
