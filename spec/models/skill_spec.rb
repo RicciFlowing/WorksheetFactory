@@ -8,7 +8,7 @@ RSpec.describe Skill, type: :model do
       skill    = Skill.new()
       skill.questions = [question, question2]
       skill.save
-      expect(skill.get_question).to eq question
+      expect(skill.questions).to include skill.get_question
     end
   end
 end

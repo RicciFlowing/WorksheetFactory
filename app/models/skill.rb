@@ -5,7 +5,6 @@ class Skill < ActiveRecord::Base
   has_many :factories, through: :factory_skill_associations
 
   def get_question
-    #self.questions.first
     self.questions.offset(rand(self.questions.count)).first
   end
 end
