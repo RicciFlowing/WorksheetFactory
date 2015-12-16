@@ -10,8 +10,8 @@ class WorksheetsController < ApplicationController
   end
 
   def create
-    @factory = Factory.find(worksheet_params[:factory_id])
-    @worksheet = Worksheet.new({title: worksheet_params[:title]});
+    factory = Factory.find(worksheet_params[:factory_id])
+    @worksheet = Worksheet.new({title: worksheet_params[:title], questions: factory.questions});
     if @worksheet.save
       render json: @worksheet, status: 200
     else

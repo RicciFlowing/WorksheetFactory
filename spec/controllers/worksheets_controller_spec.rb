@@ -6,6 +6,7 @@ RSpec.describe WorksheetsController, type: :controller do
      factory   = Factory.create({name: 'test'})
      post :create, {worksheet: {name: 'worksheet_test', factory_id: factory.id}}
      expect(assigns(:worksheet))
+     expect(assigns(:worksheet).questions).to_not be nil
    end
   end
 

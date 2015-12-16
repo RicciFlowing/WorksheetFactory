@@ -3,10 +3,11 @@ class Factory < ActiveRecord::Base
   has_many :skills, through: :factory_skill_associations
 
   def questions
-    skills = self.skills.to_a
+    skills = self.skills
+    result = []
     skills.each do |skill|
-      questions << skill.get_question
+      result << skill.get_question
     end
-    questions
+    result
   end
 end
