@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('show',{path: ':worksheet_id'});
   });
   this.route('factory');
+  this.route('questions');
 });
 
 export default Router;
