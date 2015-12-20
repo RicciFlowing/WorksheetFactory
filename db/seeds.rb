@@ -12,13 +12,14 @@ Category.create([
   {name: 'functions'},
   ])
 
-add    = Skill.create({name: 'Add to numbers'})
-shapes = Skill.create({name: 'Know the most common shapes'})
-linear = Skill.create({name: 'Uses linear functions'})
+  add_questions = Question.create([{text:'2+3', solution: '5'}, {text:'4+13', solution: '17'}])
+  shapes_questions = [Question.create({text:'How many edges has a paralleogram?', solution: '4'})]
+  linear_questions = [Question.create({text:'Two man need a hour to digg a hole. How long need four man for the job?', solution: '30min'})]
 
-add.questions = Question.create([{text:'2+3', solution: '5'}, {text:'4+13', solution: '17'}])
-shapes.questions = Question.create({text:'How many edges has a paralleogram?', solution: '4'})
-linear.questions = Question.create({text:'Two man need a hour to digg a hole. How long need four man for the job?', solution: '30min'})
 
-fac_1 = Factory.create({name: 'first_factory'})
-fac_1.skills = [add, shapes, linear]
+add    = Skill.create({name: 'Add to numbers', questions: add_questions})
+shapes = Skill.create({name: 'Know the most common shapes', questions: shapes_questions})
+linear = Skill.create({name: 'Uses linear functions', questions: linear_questions})
+
+
+fac_1 = Factory.create({name: 'first_factory', skills:[add, shapes, linear] })
