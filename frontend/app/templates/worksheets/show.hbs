@@ -1,2 +1,4 @@
 {{worksheet.title}}
-Hello
+{{#each worksheet.questions as |question|}}
+  {{question.text}}
+{{/each}}
