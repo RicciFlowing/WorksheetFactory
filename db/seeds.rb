@@ -17,10 +17,8 @@ shapes = Skill.create({name: 'Know the most common shapes'})
 linear = Skill.create({name: 'Uses linear functions'})
 
 add.questions = Question.create([{text:'2+3', solution: '5'}, {text:'4+13', solution: '17'}])
+shapes.questions = Question.create({text:'How many edges has a paralleogram?', solution: '4'})
+linear.questions = Question.create({text:'Two man need a hour to digg a hole. How long need four man for the job?', solution: '30min'})
 
 fac_1 = Factory.create({name: 'first_factory'})
 fac_1.skills = [add, shapes, linear]
-
-worksheet = Worksheet.create({title:'First worksheet'})
-worksheet.factory   = fac_1
-worksheet.questions =  add.questions
