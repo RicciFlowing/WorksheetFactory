@@ -1,4 +1,10 @@
-{{worksheet.title}}
-{{#each worksheet.questions as |question|}}
-  {{question.text}}
-{{/each}}
+<h3>{{worksheet.title}} </h3>
+
+<div>
+  <ul>
+    {{#each questions as |question|}}
+          <li>{{question.text}}</li>
+    {{/each}}
+  </ul>
+
+</div>
