@@ -13,8 +13,8 @@ Category.create([
   ])
 
   add_questions = Question.create([{text:'2+3', solution: '5'}, {text:'4+13', solution: '17'}])
-  shapes_questions = [Question.create({text:'How many edges has a paralleogram?', solution: '4'})]
-  linear_questions = [Question.create({text:'Two man need a hour to digg a hole. How long need four man for the job?', solution: '30min'})]
+  shapes_questions = [Question.create({text:'How many edges does a paralleogram have?', solution: '4'})]
+  linear_questions = [Question.create({text:'Two man need a hour to digg a hole. How long does four man need?', solution: '30min'})]
 
 
 add    = Skill.create({name: 'Add to numbers', questions: add_questions})
