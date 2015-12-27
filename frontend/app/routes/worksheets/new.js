@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       worksheet: this.store.createRecord('worksheet'),
       factories: this.store.findAll('factory')
-    })
+    });
   },
   setupController(controller, model){
     this._super(controller, model);
