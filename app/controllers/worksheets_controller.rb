@@ -5,7 +5,7 @@ class WorksheetsController < ApplicationController
   end
 
   def show
-    @worksheet = Worksheet.find(params[:id])
+    @worksheet = Worksheet.includes(:questions).find(params[:id])
     render json: @worksheet
   end
 
