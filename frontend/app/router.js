@@ -13,6 +13,9 @@ Router.map(function() {
   });
   this.route('factory');
   this.route('questions');
+  this.route('collections', function(){
+    this.route('show',{path: ':collection_id'});
+  });
 });
 
 export default Router;

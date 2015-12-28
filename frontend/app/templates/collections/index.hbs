@@ -1,0 +1,15 @@
+<ul>
+  {{#each model as |collection|}}
+  <li>
+    <h3>{{collection.name}}</h3>
+    <p>
+      {{collection.description}}
+    </p>
+    <div>
+      grade: {{collection.description}}
+    </div>
+   </li>
+  {{/each}}
+</ul>
+
+{{outlet}}
