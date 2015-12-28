@@ -23,3 +23,5 @@ linear = Skill.create({name: 'Uses linear functions', questions: linear_question
 
 
 fac_1 = Factory.create({name: 'first_factory', skills:[add, shapes, linear] })
+
+col_1 = Collection.create({name:'A collection to start with', factory: fac_1})

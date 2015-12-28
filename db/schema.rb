@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212102940) do
+ActiveRecord::Schema.define(version: 20151228180912) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "collections", force: :cascade do |t|
+    t.integer  "factory_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "year"
+    t.integer  "grade"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "collections", ["factory_id"], name: "index_collections_on_factory_id"
 
   create_table "factories", force: :cascade do |t|
     t.string   "name"
@@ -66,13 +78,7 @@ ActiveRecord::Schema.define(version: 20151212102940) do
   add_index "worksheet_questions_associations", ["question_id"], name: "index_worksheet_questions_associations_on_question_id"
   add_index "worksheet_questions_associations", ["worksheet_id"], name: "index_worksheet_questions_associations_on_worksheet_id"
 
-  create_table "worksheets", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "factory_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "worksheets", ["factory_id"], name: "index_worksheets_on_factory_id"
+# Could not dump table "worksheets" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end
