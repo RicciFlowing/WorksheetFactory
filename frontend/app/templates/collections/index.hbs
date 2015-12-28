@@ -1,7 +1,7 @@
 <ul>
   {{#each model as |collection|}}
   <li>
-    <h3>{{collection.name}}</h3>
+    <h3>{{#link-to 'collections.show' collection}} {{collection.name}}{{/link-to}}</h3>
     <p>
       {{collection.description}}
     </p>
