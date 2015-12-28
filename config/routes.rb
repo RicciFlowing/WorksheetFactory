@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :collections
   mount_ember_app :frontend, to: "/"
   resources :worksheets
   resources :questions
