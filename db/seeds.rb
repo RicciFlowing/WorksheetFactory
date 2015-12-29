@@ -21,7 +21,7 @@ add    = Skill.create({name: 'Add to numbers', questions: add_questions})
 shapes = Skill.create({name: 'Know the most common shapes', questions: shapes_questions})
 linear = Skill.create({name: 'Uses linear functions', questions: linear_questions})
 
+col_1 = Collection.create({name:'First Collection',description: 'A collection to start with', grade: 5, year: '2015/16' })
 
-fac_1 = Factory.create({name: 'first_factory', skills:[add, shapes, linear] })
-
-col_1 = Collection.create({name:'A collection to start with', factory: fac_1})
+fac_1 = Factory.create({name: 'first_factory', skills:[add, linear], collection: col_1 })
+fac_2 = Factory.create({name: 'second_factory', skills:[add, shapes], collection: col_1 })

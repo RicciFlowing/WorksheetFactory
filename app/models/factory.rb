@@ -1,6 +1,6 @@
 class Factory < ActiveRecord::Base
   has_many :factory_skill_associations
-  has_many :collections
+  belongs_to :collection
   has_many :skills, through: :factory_skill_associations
 
   def questions
