@@ -6,5 +6,5 @@ export default DS.Model.extend({
   year: DS.attr('string'),
   grade: DS.attr('number'),
   worksheets: DS.hasMany('worksheets'),
-  factory: DS.belongsTo('factory'),
+  factories: DS.hasMany('factory'),
 });
