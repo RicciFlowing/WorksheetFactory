@@ -20,3 +20,6 @@ col_1 = Collection.create({name:'First Collection',description: 'A collection to
 
 fac_1 = Factory.create({name: 'first_factory', skills:[add, linear], collection: col_1 })
 fac_2 = Factory.create({name: 'second_factory', skills:[add, shapes], collection: col_1 })
+
+set_1 = WorksheetSet.create({name: 'first_set_of_worksheets', factory: fac_1})
+set_2 = WorksheetSet.create({name: 'second_set_of_worksheets', factory: fac_2})
