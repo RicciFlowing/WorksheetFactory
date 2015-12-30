@@ -1,0 +1,2 @@
+class WorksheetSetsController < ApplicationController
+end

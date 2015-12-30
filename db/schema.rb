@@ -11,8 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228180912) do
+ActiveRecord::Schema.define(version: 20151230090955) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "collections", force: :cascade do |t|
     t.string   "name"
@@ -72,6 +77,15 @@ ActiveRecord::Schema.define(version: 20151228180912) do
 
   add_index "worksheet_questions_associations", ["question_id"], name: "index_worksheet_questions_associations_on_question_id"
   add_index "worksheet_questions_associations", ["worksheet_id"], name: "index_worksheet_questions_associations_on_worksheet_id"
+
+  create_table "worksheet_sets", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "factory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "worksheet_sets", ["factory_id"], name: "index_worksheet_sets_on_factory_id"
 
 # Could not dump table "worksheets" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
