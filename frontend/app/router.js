@@ -12,6 +12,7 @@ Router.map(function() {
   });
   this.route('worksheet-sets', function(){
     this.route('new');
+    this.route('show',{path: ':worksheet_set_id'});
   });
 });
 

@@ -1,0 +1,6 @@
+<h2> {{model.name}}</h2>
+<ul>
+  {{#each model.worksheets as |worksheet|}}
+  <li> {{#link-to 'worksheets.show' worksheet}} {{worksheet.title}} {{/link-to}}</li>
+  {{/each}}
+</ul>
