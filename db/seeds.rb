@@ -6,11 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.create([
-  {name: 'geometry'},
-  {name: 'arithmetics'},
-  {name: 'functions'},
-  ])
 
   add_questions = Question.create([{text:'2+3', solution: '5'}, {text:'4+13', solution: '17'}])
   shapes_questions = [Question.create({text:'How many edges does a paralleogram have?', solution: '4'})]
