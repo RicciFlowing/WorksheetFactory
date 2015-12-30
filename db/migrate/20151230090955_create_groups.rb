@@ -1,6 +1,6 @@
-class CreateWorksheetSets < ActiveRecord::Migration
+class CreateGroups < ActiveRecord::Migration
   def change
-    create_table :worksheet_sets do |t|
+    create_table :groups do |t|
       t.string :name
       t.belongs_to :factory, index: true, foreign_key: true
 

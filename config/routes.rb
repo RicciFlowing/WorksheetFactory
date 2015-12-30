@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   mount_ember_app :frontend, to: "/"
-  resources :worksheet_sets
+  resources :groups
   resources :collections
   resources :worksheets
   resources :questions
