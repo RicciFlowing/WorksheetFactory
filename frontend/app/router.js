@@ -10,7 +10,9 @@ Router.map(function() {
     this.route('new');
     this.route('show',{path: ':worksheet_id'});
   });
-  this.route('worksheet_sets');
+  this.route('worksheet-sets', function(){
+    this.route('new');
+  });
 });
 
 export default Router;
