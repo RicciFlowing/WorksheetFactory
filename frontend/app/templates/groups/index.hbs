@@ -1,6 +1,6 @@
-<ul>
-  {{#each model as |set|}}
-  <li> {{#link-to 'worksheetSets.show' set}}{{set.name}} {{/link-to}}</li>
+ <ul>
+  {{#each model as |group|}}
+  <li> {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}</li>
   {{/each}}
 </ul>
 
