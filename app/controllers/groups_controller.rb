@@ -1,13 +1,13 @@
 class GroupsController < ApplicationController
 
   def index
-    @worksheet_sets = Group.all
-    render json: @worksheet_sets
+    @groups = Group.includes(:worksheets).all
+    render json: @groups
   end
 
   def show
-    @worksheet_set = Group.find(params[:id])
-    render json: @worksheet_set
+    @group = Group.includes(:worksheets).find(params[:id])
+    render json: @group
   end
 
 end

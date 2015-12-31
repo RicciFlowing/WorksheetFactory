@@ -1,6 +1,6 @@
 class WorksheetsController < ApplicationController
   def index
-    @worksheets = Worksheet.all
+    @worksheets = Worksheet.includes(:questions).all
     render json: @worksheets
   end
 
