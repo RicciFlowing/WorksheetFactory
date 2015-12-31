@@ -81,7 +81,13 @@ ActiveRecord::Schema.define(version: 20151230090955) do
   add_index "worksheet_questions_associations", ["question_id"], name: "index_worksheet_questions_associations_on_question_id"
   add_index "worksheet_questions_associations", ["worksheet_id"], name: "index_worksheet_questions_associations_on_worksheet_id"
 
-# Could not dump table "worksheets" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "worksheets", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "group_id"
+  end
+
+  add_index "worksheets", ["group_id"], name: "index_worksheets_on_group_id"
 
 end
