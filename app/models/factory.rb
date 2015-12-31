@@ -1,6 +1,6 @@
 class Factory < ActiveRecord::Base
   has_many :factory_skill_associations
-  belongs_to :collection
+  belongs_to :group
   has_many :worksheet_sets
   has_many :skills, through: :factory_skill_associations
 
