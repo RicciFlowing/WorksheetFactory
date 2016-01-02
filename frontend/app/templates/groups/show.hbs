@@ -4,5 +4,9 @@
   <li> {{#link-to 'worksheets.show' worksheet}} {{worksheet.title}} {{/link-to}}</li>
   {{/each}}
 </ul>
-<input name="name" class="title-field" placeholder="Title"/>
-<button type="button" {{action 'create_worksheet'}}> Create a new worksheet </button>
+
+<div class="form-group form-inline worksheet-form">
+  <h3> Create a new worksheet</h3>
+  <input name="name" class="title-field form-control" placeholder="Title"/>
+  <button class= "btn" type="button" {{action 'create_worksheet'}}> Create </button>
+</div>
