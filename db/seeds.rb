@@ -10,15 +10,15 @@
 add_questions = Question.create([
   {text:'2+3', solution: '5'},
   {text:'4+13', solution: '17'},
-  {text:'7+24', solution: '21'};
-  {text:'3+19', solution: '22'};
+  {text:'7+24', solution: '21'},
+  {text:'3+19', solution: '22'},
    ])
 
 subtract_questions = Question.create([
  {text:'3-1', solution: '4'},
  {text:'13-4', solution: '9'},
- {text:'25-24', solution: '1'};
- {text:'23-9', solution: '14'};
+ {text:'25-24', solution: '1'},
+ {text:'23-9', solution: '14'},
   ])
 
 shapes_questions = Question.create([
@@ -26,7 +26,7 @@ shapes_questions = Question.create([
   {text:'How many corners does a cube have?', solution: '8'},
   {text:'How many faces does a pyramid have?', solution: '4'},
   ])
-  
+
 linear_questions = Question.create([
   {text:'Two man need a hour to digg a hole. How long does the man need for two holes?', solution: '2h'},
   {text:'Two breads costs 3$. How much does 8 breads cost?', solution: '12$'},
