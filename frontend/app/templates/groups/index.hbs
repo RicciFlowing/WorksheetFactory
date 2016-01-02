@@ -1,6 +1,12 @@
- <ul>
+ <ul class="list-unstyled">
   {{#each groups as |group|}}
-  <li> {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}</li>
+  <li>
+    <div class="group">
+      {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}
+      {{group.worksheet_count}}
+    </div>
+  </li>
+
   {{/each}}
 </ul>
 
