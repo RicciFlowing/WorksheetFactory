@@ -1,8 +1,18 @@
  <ul>
-  {{#each model as |group|}}
+  {{#each groups as |group|}}
   <li> {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}</li>
   {{/each}}
 </ul>
 
+<input name="name" class="name-field" placeholder="Name"/>
+<label>Factory:
+  {{#x-select value=this.factory}}
+    {{#x-option value=0}} None {{/x-option}}
+    {{#each factories as |factory|}}
+      {{#x-option value=factory}} {{factory.name}} {{/x-option}}
+    {{/each}}
+  {{/x-select}}
+</label>
+<button type="button" {{action 'create_group'}}> Create a new group </button>
 
 {{outlet}}
