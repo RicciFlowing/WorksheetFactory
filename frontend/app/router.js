@@ -13,6 +13,10 @@ Router.map(function() {
     this.route('new');
     this.route('show',{path: ':group_id'});
   });
+
+  this.route('factories', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

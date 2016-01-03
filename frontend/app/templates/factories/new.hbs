@@ -1,0 +1,22 @@
+<form {{action "save" on="submit"}}>
+  <p>
+    <label>Name:
+      {{input value=factory.name}}
+    </label>
+  </p>
+
+  <p>
+    <label>Skills:
+      {{#x-select multiple=true action="didMakeSelection"}}
+        {{#x-option value=0}} None {{/x-option}}
+        {{#each skills as |skill|}}
+          {{#x-option value=skill}} {{skill.name}} {{/x-option}}
+        {{/each}}
+      {{/x-select}}
+    </label>
+  </p>
+
+
+  <input type="submit" value="Save"/>
+  <button {{action "cancel"}}>Cancel</button>
+</form>
