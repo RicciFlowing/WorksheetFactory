@@ -3,14 +3,14 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     save() {
-      var skills = Ember.A(this.get('selection'));
       var factory = this.get('factory')
-      factory.set('skills', skills);
-      factory.save();
-      //this.transitionToRoute('groups');
+      factory.save().then(()=>{
+        this.set_skills(factory);
+      });
+      this.transitionToRoute('groups');
     },
     cancel() {
-      //this.transitionToRoute('groups');
+      this.transitionToRoute('groups');
       return false;
     },
     didMakeSelection(selection){
@@ -18,5 +18,18 @@ export default Ember.Controller.extend({
           this.set('selection', selection)
         }
     }
-  }
+  },
+  set_skills(factory){
+    var skills = Ember.A(this.get('selection'));
+    skills.forEach(
+      (skill)=>{this._create_factory_skill_association(skill, factory)}
+    );
+  },
+  _create_factory_skill_association(skill, factory){
+    alert('create association');
+    var association = this.store.createRecord('FactorySkillAssociation');
+    association.set('skill', skill);
+    association.set('factory', factory);
+    association.save();
+  },
 });

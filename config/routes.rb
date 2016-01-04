@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   mount_ember_app :frontend, to: "/"
-  resources :factory_skill_association, only: :create
+  resources :factory_skill_associations, only: :create
   resources :groups
   resources :worksheets
   resources :questions

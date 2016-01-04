@@ -1,24 +1,53 @@
- <ul class="list-unstyled">
-  {{#each groups as |group|}}
-  <li>
-    <div class="group">
-      {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}
-      {{group.worksheet_count}}
-    </div>
-  </li>
+<div class="row">
+  <div class="col-md-9">
+    <ul class="list-unstyled">
+     {{#each groups as |group|}}
+     <li>
+       <div class="group">
+         {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}
+         {{group.worksheet_count}}
+       </div>
+     </li>
+     {{/each}}
+   </ul>
+  </div>
 
-  {{/each}}
-</ul>
+  <div class="col-md-3">
+    <form role="form">
+      <h3>Create a new group</h3>
+      <div class="form-group">
+        <label>
+          Group Name:
+          <br>
+          <input name="name" class="name-field from-control" placeholder="Name"/>
+        </label>
 
-<input name="name" class="name-field" placeholder="Name"/>
-<label>Factory:
-  {{#x-select value=this.factory}}
-    {{#x-option value=0}} None {{/x-option}}
-    {{#each factories as |factory|}}
-      {{#x-option value=factory}} {{factory.name}} {{/x-option}}
-    {{/each}}
-  {{/x-select}}
-</label>
-<button type="button" {{action 'create_group'}}> Create a new group </button>
+      </div>
+
+      <div class="form-group">
+        <label>Choose a Factory:
+          <br>
+          {{#x-select value=this.factory}}
+            {{#x-option value=0}} None {{/x-option}}
+            {{#each factories as |factory|}}
+              {{#x-option value=factory}} {{factory.name}} {{/x-option}}
+            {{/each}}
+          {{/x-select}}
+        </label>
+        <br>
+        {{#link-to 'factories.new'}} Or create a new Factory {{/link-to}}
+      </div>
+
+      <div class="form-group">
+        <button type="button" {{action 'create_group'}} class='btn btn-default'> Create </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
 
 {{outlet}}

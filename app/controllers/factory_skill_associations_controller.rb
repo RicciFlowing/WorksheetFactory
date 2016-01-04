@@ -1,4 +1,4 @@
-class FactorySkillAssociationController < ApplicationController
+class FactorySkillAssociationsController < ApplicationController
 
 
   def create
@@ -12,6 +12,6 @@ class FactorySkillAssociationController < ApplicationController
 
   private
     def associaton_params
-      params.require(:association).permit(:skill_id, :factory_id)
+      params.require(:factory_skill_association).permit(:skill_id, :factory_id)
     end
 end
