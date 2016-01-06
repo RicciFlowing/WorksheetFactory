@@ -14,4 +14,10 @@ export default Ember.Route.extend({
         Ember.set(controller, 'factories', model.factories);
         Ember.set(controller, 'new_group', model.new_group);
       },
+      actions: {
+        reloadModels(){
+          this.refresh();
+          return false;
+        }
+      }
 });

@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-9">
     <ul class="list-unstyled">
-      {{#each groups as |group|}}
+      {{#each sortedGroups as |group|}}
       <li>
         <div class="group">
-          <h2> {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}           {{group.year}}</h2>
+          <h2> {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}    {{group.year}}</h2>
           <div class="group-details">
             Grade: {{group.grade}}
             Current number of worksheets: {{group.worksheet_count}}
@@ -19,8 +19,10 @@
   </div>
 
   <div class="col-md-3">
+  <h3>Create a new group</h3>
+  {{#if isExpanded}}
+   <button {{action 'contract'}} class='btn btn-default'>Hide form</button>
     <form role="form">
-      <h3>Create a new group</h3>
       <div class="form-group">
         <label>
           Group Name:
@@ -78,6 +80,9 @@
         <button type="button" {{action 'create_group'}} class='btn btn-default'> Create </button>
       </div>
     </form>
+    {{else}}
+      <button {{action 'expand'}} class='btn btn-default'>Show Form...</button>
+    {{/if}}
   </div>
 </div>
 
