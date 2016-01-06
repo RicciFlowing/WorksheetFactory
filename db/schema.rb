@@ -34,9 +34,12 @@ ActiveRecord::Schema.define(version: 20151230090955) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
+    t.string   "description"
+    t.integer  "grade"
+    t.string   "year"
     t.integer  "factory_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "groups", ["factory_id"], name: "index_groups_on_factory_id"

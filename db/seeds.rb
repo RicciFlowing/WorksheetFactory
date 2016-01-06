@@ -33,13 +33,24 @@ linear_questions = Question.create([
   ])
 
 
-add    = Skill.create({name: 'Add to numbers between 1 and 25', questions: add_questions})
+add         = Skill.create({name: 'Add to numbers between 1 and 25', questions: add_questions})
 subtract    = Skill.create({name: 'Subtract to numbers between 1 and 25', questions: subtract_questions})
-shapes = Skill.create({name: 'Know the numbers of edges, corners and faces of common shapes and solids', questions: shapes_questions})
-linear = Skill.create({name: 'Solves simple text problems with linear functions', questions: linear_questions})
+shapes      = Skill.create({name: 'Know the numbers of edges, corners and faces of common shapes and solids', questions: shapes_questions})
+linear      = Skill.create({name: 'Solves simple text problems with linear functions', questions: linear_questions})
 
 fac_1 = Factory.create({name: 'Basic arithmetic', skills:[add, subtract]})
 fac_2 = Factory.create({name: 'Shapes, solids and linear functions', skills:[shapes, linear]})
 
-group_1 = Group.create({name: 'Basic arithmetic 1', factory: fac_1})
-group_2 = Group.create({name: 'Shapes, solids and linear functions', factory: fac_2})
+group_1 = Group.create({
+  name: 'Basic arithmetic 1',
+  description: 'Tests the basics of arithmetics. Addition and subtraction.',
+  grade: 5,
+  year: '2015/16',
+  factory: fac_1})
+
+group_2 = Group.create({
+  name: 'Shapes, solids and linear functions',
+  description: 'Tests for the name of shapes and solids. In addition: Linear functions',
+  grade: 6,
+  year: '2015/16',
+  factory: fac_2})
