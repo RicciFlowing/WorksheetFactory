@@ -19,6 +19,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    head :no_content
+  end
+
   private
     def group_params
       params.require(:group).permit(:name, :factory_id, :description, :grade, :year)

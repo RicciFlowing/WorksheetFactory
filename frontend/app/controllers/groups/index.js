@@ -8,6 +8,10 @@ export default Ember.Controller.extend({
       this.get('new_group').save();
       this.send('reloadModels');
     },
+    delete_group(group) {
+      group.deleteRecord();
+      group.save();
+    },
     expand(){
       this.set('isExpanded', true);
     },

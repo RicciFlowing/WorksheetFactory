@@ -5,6 +5,9 @@
       <li>
         <div class="group">
           <h2> {{#link-to 'groups.show' group}}{{group.name}} {{/link-to}}    {{group.year}}</h2>
+          <div {{action 'delete_group' group}} class="btn btn-danger pull-right">
+             <span class="fa fa-cross"> </span> Delete
+          </div>
           <div class="group-details">
             Grade: {{group.grade}}
             Current number of worksheets: {{group.worksheet_count}}
