@@ -41,6 +41,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "emberx-select": "2.0.2",
-    "htmlbars": "0.14.8"
+    "htmlbars": "0.14.8",
+    "ember-validations": "^2.0.0-alpha"
   }
 }
