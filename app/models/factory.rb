@@ -1,8 +1,9 @@
 class Factory < ActiveRecord::Base
   has_many :factory_skill_associations
-  belongs_to :group
-  has_many :worksheet_sets
+  has_many :groups
   has_many :skills, through: :factory_skill_associations
+
+  validates :name, length: {minimum: 4}
 
   def questions
     skills = self.skills

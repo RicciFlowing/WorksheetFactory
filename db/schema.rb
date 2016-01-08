@@ -17,10 +17,8 @@ ActiveRecord::Schema.define(version: 20151230090955) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "group_id"
   end
 
-  add_index "factories", ["group_id"], name: "index_factories_on_group_id"
 
   create_table "factory_skill_associations", force: :cascade do |t|
     t.integer  "factory_id"
