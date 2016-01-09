@@ -6,5 +6,6 @@ export default Ember.Route.extend({
     this._super(controller, model);
     Ember.set(controller, 'worksheet', model);
     Ember.set(controller, 'questions', model.get('questions'));
+    Ember.set(controller, 'group', model.get('group'));
   },
 });

@@ -1,12 +1,12 @@
-<h2> {{model.name}}</h2>
+<h2> {{group.name}}</h2>
 <ul class="list-unstyled">
-  {{#each model.worksheets as |worksheet|}}
+  {{#each group.worksheets as |worksheet|}}
   <li> {{#link-to 'worksheets.show' worksheet}} {{worksheet.title}} {{/link-to}}</li>
   {{/each}}
 </ul>
 
-<div class="form-group form-inline worksheet-form">
+<form role="form">
   <h3> Create a new worksheet</h3>
-  <input name="name" class="title-field form-control" placeholder="Title"/>
-  <button class= "btn" type="button" {{action 'create_worksheet'}}> Create </button>
-</div>
+  {{input value=new_worksheet.title}}
+  <button class= "btn" type="button" {{action "submit"}}> Create </button>
+</form>
