@@ -14,10 +14,15 @@ export default Ember.Route.extend({
         Ember.set(controller, 'factories', model.factories);
         Ember.set(controller, 'new_group', model.new_group);
       },
+      deactivate(){
+        alert('Hello');
+        let model = this.controllerFor('groups.index').get('new_group');
+        model.rollbackAttributes();
+      },
       actions: {
         reloadModels(){
           this.refresh();
           return false;
-        }
+        },
       }
 });
