@@ -9,6 +9,8 @@ export default Ember.Controller.extend({
       new_worksheet.title= Ember.$('.title-field').val() || 'No title given';
       Ember.$('.title-field').val('');
       new_worksheet.save();
+      let flash = this.get('flashMessages');
+      flash.success('Success!');
       return false;
     },
 

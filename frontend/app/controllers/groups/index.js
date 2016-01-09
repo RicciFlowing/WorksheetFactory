@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
   actions: {
     create_group() {
       this.get('new_group').save();
+      let flash = this.get('flashMessages');
+      flash.success('Created a group!');
       this.send('reloadModels');
     },
     delete_group(group) {
