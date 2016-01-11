@@ -7,5 +7,5 @@ export default DS.Model.extend({
   year: DS.attr('string'),
   factory: DS.belongsTo('factory',  {async: true}),
   worksheets: DS.hasMany('worksheet', {async: true}),
-  worksheet_count: Ember.computed('worksheets', function(){ return this.get('worksheets').length})
+  worksheet_count: Ember.computed.alias('worksheets.length')
 });
