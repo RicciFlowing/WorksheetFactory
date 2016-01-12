@@ -1,7 +1,7 @@
 <h2> {{group.name}}</h2>
 <ul class="list-unstyled">
   {{#each group.worksheets as |worksheet|}}
-  <li> {{#link-to 'worksheets.show' worksheet}} {{worksheet.title}} {{/link-to}}</li>
+    {{worksheet-short worksheet=worksheet}}
   {{/each}}
 </ul>
 
