@@ -21,5 +21,9 @@ export default Ember.Route.extend({
         this.refresh();
         return false;
       },
+      deleteWorksheet(worksheet){
+        worksheet.destroyRecord();
+        return false;
+      }
     }
 });

@@ -19,6 +19,12 @@ class WorksheetsController < ApplicationController
     end
   end
 
+  def destroy
+    @worksheet   = Worksheet.find(params[:id])
+    @worksheet.destroy
+    head :no_content
+  end
+
   private
     def worksheet_params
       params.require(:worksheet).permit(:title, :group_id)
