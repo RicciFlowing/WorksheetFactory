@@ -1,4 +1,5 @@
 <h2> {{group.name}}</h2>
+{{#link-to 'groups.index' class="btn btn-default"}} Back to all groups {{/link-to}}
 <ul class="list-unstyled">
   {{#each group.worksheets as |worksheet|}}
     {{worksheet-short worksheet=worksheet action='deleteWorksheet'}}
