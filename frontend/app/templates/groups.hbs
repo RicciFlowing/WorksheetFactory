@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-3">
     <ul class="list-unstyled">
       {{#each sortedGroups as |group|}}
       <li>
@@ -31,75 +31,14 @@
       {{/if}}
       </li>
       {{/each}}
+      <li class="group">
+        {{#link-to 'groups.new' class="circled-plus"}} + {{/link-to}}
+      </li>
     </ul>
+
   </div>
 
-  <div class="col-md-3">
-  <h3>Create a new group</h3>
-  {{#if isExpanded}}
-   <button {{action 'contract'}} class='btn btn-default'>Hide form</button>
-    <form role="form">
-      <div class="form-group">
-        <label>
-          Group Name:
-          <br>
-          {{input value=new_group.name placeholder="Name" class="form-control"}}
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label>
-          Description:
-          <br>
-          {{textarea value=new_group.description placeholder="Description" class="form-control"}}
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label>
-          Grade:
-          <br>
-          {{input type="number" value=new_group.grade min="1" max="13" step="1"  placeholder="Grade" class="form-control"}}
-        </label>
-      </div>
-
-      <div class="form-group">
-        <label>Choose a Year:
-          <br>
-          {{#x-select value=new_group.year class="form-control"}}
-          {{#x-option value=nil}} None {{/x-option}}
-          {{#x-option value="2015/16"}} School year 2015/16 {{/x-option}}
-          {{#x-option value="2016/17"}} School year 2016/17 {{/x-option}}
-          {{#x-option value="2017/18"}} School year 2017/18 {{/x-option}}
-          {{/x-select}}
-        </label>
-        <br>
-      </div>
-
-      <div class="form-group">
-        <label>Choose a Factory:
-          <br>
-          {{#x-select value=new_group.factory class="form-control"}}
-          {{#x-option value=0}} None {{/x-option}}
-          {{#each factories as |factory|}}
-          {{#x-option value=factory}} {{factory.name}} {{/x-option}}
-          {{/each}}
-          {{/x-select}}
-        </label>
-        <br>
-        {{#link-to 'factories.new'}} Or create a new Factory {{/link-to}}
-      </div>
-
-
-
-      <div class="form-group">
-        <button type="button" {{action 'create_group'}} class='btn btn-default'> Create </button>
-      </div>
-    </form>
-    {{else}}
-      <button {{action 'expand'}} class='btn btn-default'>Show Form...</button>
-    {{/if}}
+  <div class="col-md-9">
+     {{outlet}}
   </div>
 </div>
-
-{{outlet}}

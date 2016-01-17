@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     submit(){
-       Ember.Logger.info('log value of foo:', 'foo');
       let new_worksheet = this.get('new_worksheet')
       new_worksheet.set('group', this.get('group'));
       new_worksheet.save();

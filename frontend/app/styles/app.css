@@ -1,3 +1,10 @@
+.circled-plus {
+  font-size: 50px;
+  margin: auto;
+  background-color: white;
+  border-radius: 50%;
+}
+
 .worksheet-form {
   border: solid;
   border-color: grey;
