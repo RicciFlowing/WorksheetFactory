@@ -5,8 +5,8 @@
   {{/each}}
 </ul>
 
-<form role="form">
+<form role="form" onsubmit="return false">
   <h3> Create a new worksheet</h3>
-  {{input value=new_worksheet.title}}
+  {{input value=new_worksheet.title enter="submit"}}
   <button class= "btn" type="button" {{action "submit"}}> Create </button>
 </form>
