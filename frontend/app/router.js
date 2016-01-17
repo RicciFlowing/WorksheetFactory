@@ -10,8 +10,8 @@ Router.map(function() {
     this.route('show',{path: ':worksheet_id'});
   });
   this.route('groups', function(){
-    this.route('new');
-    this.route('show',{path: ':group_id'});
+    this.route('show', {path: ':group_id'});
+    this.route('new');  
   });
 
   this.route('factories', function() {
