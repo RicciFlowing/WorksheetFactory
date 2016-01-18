@@ -1,7 +1,7 @@
 
   {{#if group.id}}
   <div class="group">
-    <h2> {{#link-to 'groups.show' group.id}}{{group.name}} {{/link-to}}    {{group.year}}</h2>
+    <h2> {{group.name}}  {{group.year}}</h2>
     <div {{action 'delete_group' group}} class="btn btn-danger pull-right">
        <span class="fa fa-cross"> </span> Delete
     </div>
@@ -13,17 +13,5 @@
       {{group.description}}
     </p>
   </div>
-{{else if isExpanded}}
-<div class="group">
-  <h2> {{#link-to 'groups.show' group.id}}{{group.name}} {{/link-to}}    {{group.year}}</h2>
-  <div class="group-details">
-    Grade: {{group.grade}}
-    Current number of worksheets: {{group.worksheet_count}}
-  </div>
-  <p>
-    {{group.description}}
-  </p>
-</div>
-{{/if}}
 
 {{yield}}

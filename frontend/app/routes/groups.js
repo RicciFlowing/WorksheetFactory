@@ -8,4 +8,9 @@ export default Ember.Route.extend({
     this._super(controller, model);
     Ember.set(controller, 'groups', model);
   },
+  actions:{
+    showGroup(group){
+      this.transitionTo('groups.show', group.id);
+    }
+  }
 });
