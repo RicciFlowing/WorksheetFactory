@@ -11,10 +11,14 @@ export default Ember.Route.extend({
       this._super(controller, model);
       Ember.set(controller, 'group', model.group);
       Ember.set(controller, 'new_worksheet', model.new_worksheet);
+      Ember.set(controller, 'selectedGroup', model.group);
+      this.controllerFor('groups').set('selectedGroup', model.group );
     },
     deactivate(){
+      this._super();
       let model = this.controllerFor('groups.show').get('new_worksheet');
-      model.rollbackAttributes();
+      model.destroyRecord();
+      this.controllerFor('groups').set('selectedGroup', null );
     },
     actions: {
       reloadModels(){

@@ -10,6 +10,6 @@ export default Ember.Controller.extend({
       flash.success('Created a Worksheet!');
       this.send('reloadModels');
       return false;
-    }
+    },
   }
 });
