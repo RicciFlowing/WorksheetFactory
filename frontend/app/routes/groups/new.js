@@ -13,6 +13,14 @@ export default Ember.Route.extend({
     Ember.set(controller, 'factories', model.factories);
     this.controllerFor('groups').set('selectedGroup', 'new' );
   },
+  resetController: function(controller, isExiting, transition) {
+   if (isExiting) {
+     let group = controller.get('group');
+     if(group.get('isNew')){
+       group.destroyRecord();
+     }
+   }
+ },
   deactivate(){
     this._super();
     this.controllerFor('groups').set('selectedGroup', null );
