@@ -2,9 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'li',
-  classNameBindings: ['active'],
-  active: false,
+  classNames: ['group'],
+  classNameBindings: ['selected'],
+  selected: function() {
+    return this.get('list.selected') === this.get('group');
+  }.property('list.selected', 'group'),
   click(){
+    this.get('list').send('select', this.get('group'));
     this.sendAction('action', this.get('group'));
   },
 });

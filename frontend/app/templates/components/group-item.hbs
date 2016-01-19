@@ -1,16 +1,13 @@
-
-  <div class="group">
-    <h2> {{group.name}}  {{group.year}}</h2>
-    <div {{action 'delete_group' group}} class="btn btn-danger pull-right">
-       <span class="fa fa-cross"> </span> Delete
-    </div>
-    <div class="group-details">
-      Grade: {{group.grade}}
-      Current number of worksheets: {{group.worksheet_count}}
-    </div>
-    <p>
-      {{group.description}}
-    </p>
-  </div>
+<h2> {{group.name}}  {{group.year}}</h2>
+<div {{action 'delete_group' group}} class="btn btn-danger pull-right">
+  <span class="fa fa-cross"> </span> Delete
+</div>
+<div class="group-details">
+  Grade: {{group.grade}}
+  Current number of worksheets: {{group.worksheet_count}}
+</div>
+<p>
+  {{group.description}}
+</p>
 
 {{yield}}
