@@ -12,6 +12,9 @@ export default Ember.Route.extend({
   actions:{
     showGroup(group){
       this.transitionTo('groups.show', group.id);
+    },
+    newGroup(){
+      this.transitionTo('groups.new');
     }
   }
 });

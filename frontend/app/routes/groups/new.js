@@ -11,5 +11,10 @@ export default Ember.Route.extend({
     this._super(controller, model);
     Ember.set(controller, 'group', model.group);
     Ember.set(controller, 'factories', model.factories);
+    this.controllerFor('groups').set('selectedGroup', 'new' );
+  },
+  deactivate(){
+    this._super();
+    this.controllerFor('groups').set('selectedGroup', null );
   },
 });

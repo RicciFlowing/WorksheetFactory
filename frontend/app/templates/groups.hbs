@@ -5,11 +5,10 @@
           {{#each sortedGroups as |group|}}
           {{group-item group=group list=list action='showGroup'}}
         {{/each}}
+        {{new-item list=list action='newGroup'}}
       {{/group-list}}
     </ul>
-    <li class="group">
-      {{#link-to 'groups.new' class="circled-plus"}} + {{/link-to}}
-    </li>
+
   </div>
 
   <div class="col-md-9">
