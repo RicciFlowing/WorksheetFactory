@@ -12,4 +12,12 @@ export default Ember.Route.extend({
     Ember.set(controller, 'skills', model.skills);
     Ember.set(controller, 'factory', model.factory);
   },
+  resetController: function(controller, isExiting, transition) {
+   if (isExiting) {
+     let factory = controller.get('factory');
+     if(factory.get('isNew')){
+       factory.destroyRecord();
+     }
+   }
+ }
 });
