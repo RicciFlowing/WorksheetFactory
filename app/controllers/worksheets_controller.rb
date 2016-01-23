@@ -21,6 +21,15 @@ class WorksheetsController < ApplicationController
     end
   end
 
+  def update
+    @worksheet = Worksheet.update(worksheet_params);
+    if @worksheet.save
+      render json: @worksheet, status: 200
+    else
+      render json: @worksheet.errors, status: 400
+    end
+  end
+
   def destroy
     @worksheet   = Worksheet.find(params[:id])
     @worksheet.destroy
