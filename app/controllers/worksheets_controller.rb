@@ -22,8 +22,8 @@ class WorksheetsController < ApplicationController
   end
 
   def update
-    @worksheet = Worksheet.update(worksheet_params);
-    if @worksheet.save
+    @worksheet = Worksheet.find(update_params[:id])
+    if @worksheet.update(update_params[:worksheet])
       render json: @worksheet, status: 200
     else
       render json: @worksheet.errors, status: 400
@@ -37,6 +37,10 @@ class WorksheetsController < ApplicationController
   end
 
   private
+    def update_params
+      params.permit!
+      #params.require(:worksheet).permit(:title, :group_id, :archived)
+    end
     def worksheet_params
       params.require(:worksheet).permit(:title, :group_id, :archived)
     end
