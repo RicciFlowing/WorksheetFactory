@@ -14,7 +14,7 @@ class WorksheetsController < ApplicationController
     group     = Group.find(worksheet_params[:group_id])
     questions = group.get_questions
     title = "Worksheet #{group.worksheets.count+1}"
-    @worksheet = Worksheet.new({title: title, group: group, questions: questions});
+    @worksheet = Worksheet.new({title: title, group: group, questions: questions, archived: worksheet_params[:archived] });
     if @worksheet.save
       render json: @worksheet, status: 200
     else

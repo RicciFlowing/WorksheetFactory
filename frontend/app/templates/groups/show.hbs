@@ -1,6 +1,9 @@
 <h2> {{group.name}}</h2>
+
+
+
 <ul class="list-unstyled">
-  {{#each group.worksheets as |worksheet|}}
+  {{#each remainingWorksheets as |worksheet|}}
     {{worksheet-short worksheet=worksheet action='archiveWorksheet'}}
   {{/each}}
 </ul>

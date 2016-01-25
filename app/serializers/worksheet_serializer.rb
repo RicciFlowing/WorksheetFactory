@@ -1,4 +1,4 @@
 class WorksheetSerializer < ActiveModel::Serializer
-  attributes :id, :title
+  attributes :id, :title, :archived
   has_many :questions
 end
