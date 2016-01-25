@@ -29,6 +29,11 @@ export default Ember.Route.extend({
         worksheet.set('archived', true);
         worksheet.save();
         return false;
+      },
+      refreshWorksheet(worksheet){
+        worksheet.set('archived', false);
+        worksheet.save();
+        return false;
       }
     }
 });
