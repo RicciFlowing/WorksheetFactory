@@ -3,8 +3,11 @@
     {{worksheet.title}}
   {{/link-to}}
 </h3>
-<button class="btn btn-danger" {{action "deletePressed"}}>Delete</button>
-
+{{#if archived}}
+ <button class="btn btn-default" {{action "pressedButton"}}>Refresh</button>
+{{else}}
+ <button class="btn btn-danger" {{action "pressedButton"}}>Archive</button>
+{{/if}}
 
 
 {{yield}}

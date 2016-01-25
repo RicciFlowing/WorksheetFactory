@@ -25,8 +25,14 @@ export default Ember.Route.extend({
         this.store.createRecord('worksheet', {group: group}).save();
         return false;
       },
-      deleteWorksheet(worksheet){
-        worksheet.destroyRecord();
+      archiveWorksheet(worksheet){
+        worksheet.set('archived', true);
+        worksheet.save();
+        return false;
+      },
+      refreshWorksheet(worksheet){
+        worksheet.set('archived', false);
+        worksheet.save();
         return false;
       }
     }
