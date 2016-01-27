@@ -16,10 +16,5 @@ export default Ember.Route.extend({
     newGroup(){
       this.transitionTo('groups.new');
     },
-    delete_group(group) {
-      group.deleteRecord();
-      group.save();
-      return false;
-    },
   }
 });

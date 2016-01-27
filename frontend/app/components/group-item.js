@@ -10,4 +10,9 @@ export default Ember.Component.extend({
   click(){
     this.sendAction('action', this.get('group'));
   },
+  actions: {
+    delete(){
+      this.get('group').destroyRecord();
+    }
+  }
 });
