@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
     delete_group(group) {
       group.deleteRecord();
       group.save();
+      return false;
     },
   },
 });

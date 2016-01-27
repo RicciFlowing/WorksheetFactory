@@ -14,7 +14,7 @@ export default Ember.Route.extend({
     this.controllerFor('groups').set('selectedGroup', 'new' );
   },
   resetController: function(controller, isExiting, transition) {
-   if (isExiting) {
+   if(isExiting) {
      let group = controller.get('group');
      if(group.get('isNew')){
        group.destroyRecord();
