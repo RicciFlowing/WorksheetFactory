@@ -1,39 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
+require_relative 'seeder.rb'
 
 add_questions = Question.create([
   {text:'2+3', solution: '5'},
   {text:'4+13', solution: '17'},
   {text:'7+24', solution: '21'},
   {text:'3+19', solution: '22'},
-   ])
+  ])
 
-subtract_questions = Question.create([
- {text:'3-1', solution: '4'},
- {text:'13-4', solution: '9'},
- {text:'25-24', solution: '1'},
- {text:'23-9', solution: '14'},
- ])
+  subtract_questions = Question.create([
+    {text:'3-1', solution: '4'},
+    {text:'13-4', solution: '9'},
+    {text:'25-24', solution: '1'},
+    {text:'23-9', solution: '14'},
+    ])
 
- random = Proc.new { |min, max| rand(max-min)+min }
+random = Proc.new { |min, max| rand(max-min)+min }
 
- quads  = Proc.new do
-   num = random.call(3,20)
-   {square: num*num, number: num}
- end
+quads  = Proc.new do
+  num = random.call(3,20)
+  {square: num*num, number: num}
+end
 
- Seeder.create_skill(name: 'Quadratwurzel berechnen',
-  templates:
-  [{template: "Berechne die Quadratwurzel von {{square}} == {{number}}", values: quads}],
-  count: 10
- )
+Seeder.create_skill(name: 'Quadratwurzel berechnen',
+templates:
+[{template: "Berechne die Quadratwurzel von {{square}} == {{number}}", values: quads}],
+count: 10
+)
 
 Seeder.create_skill(name: 'Quadratzahlen berechnen',
   templates:

@@ -4,9 +4,7 @@ module Seeder
     @name      = args[:name]
     @questions = QuestionGenerator.create(templates: args[:templates], count: args[:count])
     data =  {name: @name, questions: @questions}
-    puts 'Skill created'
-    puts data
-    # ::Skill.create(data)
+    ::Skill.create(data)
   end
 
 end
@@ -28,7 +26,6 @@ module QuestionGenerator
 
     def render_template
       @templates.sample.render
-      #::Question.create(questions)
     end
 
     def create_questions(count)
@@ -36,10 +33,7 @@ module QuestionGenerator
       count.times do
         questions.push(render_template)
       end
-      puts 'Questions created'
-      puts questions
-      questions
-      #::Question.create(questions)
+      ::Question.create(questions)
     end
 end
 
@@ -75,13 +69,3 @@ class Template
       result
     end
 end
-
-random = Proc.new { |min, max| rand(max-min)+min }
-
-quads  = Proc.new do
-  num = random.call(3,20)
-  {square: num*num, number: num}
-end
-
-template = "Berechne die Quadratwurzel von {{square}} == {{number}}"
-Seeder.create_skill(name: 'Quadratwurzel berechnen', templates: [{template: template, values: quads}], count: 10)
