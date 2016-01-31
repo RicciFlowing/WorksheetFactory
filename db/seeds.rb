@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require_relative 'seeder.rb'
+
 
 add_questions = Question.create([
   {text:'2+3', solution: '5'},
@@ -20,14 +20,26 @@ subtract_questions = Question.create([
  {text:'13-4', solution: '9'},
  {text:'25-24', solution: '1'},
  {text:'23-9', solution: '14'},
-  ])
+ ])
 
-template = Template.new({text: "Berechne die Quadratwurzel von {{square}}", solution: "{{number}}"})
-root_values = []
-(3..20).each do |num|
-  root_values << {square: num*num, number: num}
-end
-Seeder.create_skill(name: 'Quadratwurzel berechnen', template: template, values: root_values)
+ random = Proc.new { |min, max| rand(max-min)+min }
+
+ quads  = Proc.new do
+   num = random.call(3,20)
+   {square: num*num, number: num}
+ end
+
+ Seeder.create_skill(name: 'Quadratwurzel berechnen',
+  templates:
+  [{template: "Berechne die Quadratwurzel von {{square}} == {{number}}", values: quads}],
+  count: 10
+ )
+
+Seeder.create_skill(name: 'Quadratzahlen berechnen',
+  templates:
+    [{template: "Berechne {{square}}^2 == {{number}}", values: quads}],
+    count: 10
+)
 
 
 shapes_questions = Question.create([
