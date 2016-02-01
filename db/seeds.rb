@@ -1,23 +1,9 @@
 require_relative 'seeder.rb'
 
-add_questions = Question.create([
-  {text:'2+3', solution: '5'},
-  {text:'4+13', solution: '17'},
-  {text:'7+24', solution: '21'},
-  {text:'3+19', solution: '22'},
-  ])
-
-  subtract_questions = Question.create([
-    {text:'3-1', solution: '4'},
-    {text:'13-4', solution: '9'},
-    {text:'25-24', solution: '1'},
-    {text:'23-9', solution: '14'},
-    ])
-
-random = Proc.new { |min, max| rand(max-min)+min }
+integer = Proc.new { |min, max| rand(max-min)+min }
 
 quads  = Proc.new do
-  num = random.call(3,20)
+  num = integer.call(3,20)
   {square: num*num, number: num}
 end
 
@@ -33,6 +19,27 @@ Seeder.create_skill(name: 'Quadratzahlen berechnen',
     count: 10
 )
 
+decimal = Proc.new { |min, max, digits| (max-min)*rand+min).round(digits) }
+
+decimal_sum = Proc.new do
+  dec_1 = decimal.call(0,30,3)
+  dec_2 = decimal.call(0,30,2)
+  {dec_1: dec_1 , dec_2: dec_2, sum: (dec_1 + dec_2).round(2)}
+end
+
+Seeder.create_skill(name: 'Zwei Dezimalzahlen addieren',
+  templates:
+    [{template: "{{dec_1}} + {{dec_2}} == {{sum}}", values: decimal_sum}],
+    count: 10
+)
+
+Seeder.create_skill(name: 'Zwei Dezimalzahlen subtrahieren',
+  templates:
+    [{template: "{{sum}} - {{dec_2}} == {{dec_1}}", values: decimal_sum}],
+    count: 10
+)
+
+
 
 shapes_questions = Question.create([
   {text:'How many edges does a parallelogram have?', solution: '4'},
@@ -46,24 +53,15 @@ linear_questions = Question.create([
   ])
 
 
-add         = Skill.create({name: 'Add to numbers between 1 and 25', questions: add_questions})
-subtract    = Skill.create({name: 'Subtract to numbers between 1 and 25', questions: subtract_questions})
 shapes      = Skill.create({name: 'Know the numbers of edges, corners and faces of common shapes and solids', questions: shapes_questions})
 linear      = Skill.create({name: 'Solves simple text problems with linear functions', questions: linear_questions})
 
-fac_1 = Factory.create({name: 'Basic arithmetic', skills:[add, subtract]})
-fac_2 = Factory.create({name: 'Shapes, solids and linear functions', skills:[shapes, linear]})
+fac_1 = Factory.create({name: 'Shapes, solids and linear functions', skills:[shapes, linear]})
 
-group_1 = Group.create({
-  name: 'Basic arithmetic 1',
-  description: 'Tests the basics of arithmetics. Addition and subtraction.',
-  grade: 5,
-  year: '2015/16',
-  factory: fac_1})
 
 group_2 = Group.create({
   name: 'Shapes, solids and linear functions',
   description: 'Tests for the name of shapes and solids. In addition: Linear functions',
   grade: 6,
   year: '2015/16',
-  factory: fac_2})
+  factory: fac_1})
