@@ -1,12 +1,18 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var pickFiles = require('broccoli-static-compiler');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     'ember-bootstrap': {
     'importBootstrapTheme': true
 }
+  });
+
+  var katexFonts = pickFiles('bower_components/katex/dist/fonts', {
+      srcDir: '/',
+      destDir: '/assets/fonts'
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -21,6 +27,8 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-
-  return app.toTree();
+  app.import('bower_components/katex/dist/katex.min.css')
+  app.import('bower_components/katex/dist/katex.min.js')
+  app.import('bower_components/katex/dist/contrib/auto-render.min.js')
+  return app.toTree([katexFonts]);
 };

@@ -1,6 +1,6 @@
 <h3>{{worksheet.title}} </h3>
 
-<div>
+<div class="worksheet-table">
   <table class="table">
     <thead>
       <td>
@@ -32,3 +32,17 @@
 </div>
 
 {{#link-to 'groups.show' group.id}} Back to {{group.name}} {{/link-to}}
+
+    <script>
+      renderMathInElement(
+          document.getElementById("worksheet-table"),
+          {
+              delimiters: [
+                  {left: "$$", right: "$$", display: true},
+                  {left: "\\[", right: "\\]", display: true},
+                  {left: "$", right: "$", display: false},
+                  {left: "\\(", right: "\\)", display: false}
+              ]
+          }
+      );
+    </script>
