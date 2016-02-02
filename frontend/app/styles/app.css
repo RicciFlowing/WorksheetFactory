@@ -1,3 +1,21 @@
+.drop {
+  display: block;
+  border: solid;
+  border-color: grey;
+  border-radius: 5px;
+  background-color: grey;
+  min-height: 100px;
+}
+
+.skill {
+    border: solid;
+    border-color: grey;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+}
+
+
 .circled-plus {
   font-size: 50px;
   margin: auto;
