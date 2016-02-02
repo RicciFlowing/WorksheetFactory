@@ -31,8 +31,7 @@ export default Ember.Controller.extend({
     this.set('selection', Ember.A([]));
   },
   _create_factory_skill_association(skill, factory){
-        alert('create');
-    var association = this.store.createRecord('FactorySkillAssociation');
+    let association = this.store.createRecord('FactorySkillAssociation');
     association.set('skill', skill);
     association.set('factory', factory);
     association.save();
