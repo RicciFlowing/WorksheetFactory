@@ -1,6 +1,6 @@
 <h3>{{worksheet.title}} </h3>
 
-<div class="worksheet-table">
+<div id="worksheetTable">
   <table class="table">
     <thead>
       <td>
@@ -15,34 +15,10 @@
     </thead>
 <tbody>
     {{#each questions as |question index|}}
-    <tr>
-      <td>
-        {{index}}
-      </td>
-      <td>
-        {{question.text}}
-      </td>
-      <td>
-        {{question.solution}}
-      </td>
-    </tr>
+      {{question-row question=question index=index}}
     {{/each}}
 </tbody>
   </table>
 </div>
 
 {{#link-to 'groups.show' group.id}} Back to {{group.name}} {{/link-to}}
-
-    <script>
-      renderMathInElement(
-          document.getElementById("worksheet-table"),
-          {
-              delimiters: [
-                  {left: "$$", right: "$$", display: true},
-                  {left: "\\[", right: "\\]", display: true},
-                  {left: "$", right: "$", display: false},
-                  {left: "\\(", right: "\\)", display: false}
-              ]
-          }
-      );
-    </script>

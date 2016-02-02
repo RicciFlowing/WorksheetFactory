@@ -9,17 +9,17 @@ end
 
 Seeder.create_skill(name: 'Quadratwurzel berechnen',
 templates:
-[{template: "Berechne die Quadratwurzel von {{square}} == {{number}}", values: quads}],
+[{template: "Berechne die Quadratwurzel von $\\sqrt[2]{ {{square}} }$ == {{number}}", values: quads}],
 count: 10
 )
 
 Seeder.create_skill(name: 'Quadratzahlen berechnen',
   templates:
-    [{template: "Berechne {{square}}^2 == {{number}}", values: quads}],
+    [{template: "Berechne $ {{number}}^2 $ == {{square}}", values: quads}],
     count: 10
 )
 
-decimal = Proc.new { |min, max, digits| (max-min)*rand+min).round(digits) }
+decimal = Proc.new { |min, max, digits| ((max-min)*rand+min).round(digits) }
 
 decimal_sum = Proc.new do
   dec_1 = decimal.call(0,30,3)
