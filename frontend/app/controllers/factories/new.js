@@ -1,22 +1,26 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  selection: Ember.A([]),
   actions: {
     save() {
       var factory = this.get('factory')
       factory.save().then(()=>{
         this.set_skills(factory);
       });
+      this.set('selection', Ember.A([]));
       this.transitionToRoute('groups');
     },
     cancel() {
       this.transitionToRoute('groups');
       return false;
     },
-    didMakeSelection(selection){
-        if (selection) {
-          this.set('selection', selection)
-        }
+    addToSelection(skill){
+      Ember.Logger.log(this.get('selection'));
+      this.get('selection').pushObject(skill);
+    },
+    removeFromSelection(skill){
+      this.get('selection').removeObject(skill);
     }
   },
   set_skills(factory){

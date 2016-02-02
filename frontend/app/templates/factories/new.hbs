@@ -5,16 +5,30 @@
     </label>
   </p>
 
-  <p>
-    <label>Skills:
-      {{#x-select multiple=true action="didMakeSelection"}}
-        {{#x-option value=0}} None {{/x-option}}
-        {{#each skills as |skill|}}
-          {{#x-option value=skill}} {{skill.name}} {{/x-option}}
-        {{/each}}
-      {{/x-select}}
-    </label>
-  </p>
+
+  <h3>Available skills</h3>
+  {{#each skills as |skill|}}
+    {{#draggable-object content=skill}}
+      {{skill.name}}
+    {{/draggable-object}}
+  {{/each}}
+
+  {{#draggable-object-target action="removeFromSelection"}}
+  Remove
+  {{/draggable-object-target}}
+
+  <h3>Selected Skills</h3>
+
+  {{#each selection as |skill|}}
+    {{#draggable-object content=skill}}
+      {{skill.name}}
+    {{/draggable-object}}
+  {{/each}}
+
+  {{#draggable-object-target action="addToSelection"}}
+    Add skills here
+  {{/draggable-object-target}}
+
 
 
   <input type="submit" value="Save"/>
