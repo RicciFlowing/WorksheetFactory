@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120181037) do
+ActiveRecord::Schema.define(version: 20160207191343) do
 
   create_table "factories", force: :cascade do |t|
     t.string   "name"
@@ -34,12 +34,9 @@ ActiveRecord::Schema.define(version: 20160120181037) do
     t.string   "description"
     t.integer  "grade"
     t.string   "year"
-    t.integer  "factory_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "groups", ["factory_id"], name: "index_groups_on_factory_id"
 
   create_table "questions", force: :cascade do |t|
     t.string   "text"
@@ -71,6 +68,17 @@ ActiveRecord::Schema.define(version: 20160120181037) do
 
   add_index "worksheet_questions_associations", ["question_id"], name: "index_worksheet_questions_associations_on_question_id"
   add_index "worksheet_questions_associations", ["worksheet_id"], name: "index_worksheet_questions_associations_on_worksheet_id"
+
+  create_table "worksheet_sets", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "factory_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "worksheet_sets", ["factory_id"], name: "index_worksheet_sets_on_factory_id"
+  add_index "worksheet_sets", ["group_id"], name: "index_worksheet_sets_on_group_id"
 
   create_table "worksheets", force: :cascade do |t|
     t.string   "title"
