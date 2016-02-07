@@ -17,6 +17,7 @@ Router.map(function() {
   this.route('factories', function() {
     this.route('new');
   });
+  this.route('sets');
 });
 
 export default Router;
