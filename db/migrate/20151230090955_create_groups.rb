@@ -5,7 +5,6 @@ class CreateGroups < ActiveRecord::Migration
       t.string :description
       t.integer :grade
       t.string :year
-      t.belongs_to :factory, index: true, foreign_key: true
 
       t.timestamps null: false
     end
