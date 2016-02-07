@@ -82,12 +82,12 @@ ActiveRecord::Schema.define(version: 20160207191343) do
 
   create_table "worksheets", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "group_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "worksheet_set_id"
     t.boolean  "archived"
   end
 
-  add_index "worksheets", ["group_id"], name: "index_worksheets_on_group_id"
+  add_index "worksheets", ["worksheet_set_id"], name: "index_worksheets_on_worksheet_set_id"
 
 end
