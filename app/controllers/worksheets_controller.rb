@@ -11,10 +11,10 @@ class WorksheetsController < ApplicationController
   end
 
   def create
-    group     = Group.find(worksheet_params[:group_id])
-    questions = group.get_questions
-    title = "Worksheet #{group.worksheets.count+1}"
-    @worksheet = Worksheet.new({title: title, group: group, questions: questions, archived: worksheet_params[:archived] });
+    set     = WorksheetSet.find(worksheet_params[:worksheet_set_id])
+    questions = set.get_questions
+    title = "Worksheet #{set.worksheets.count+1}"
+    @worksheet = Worksheet.new({title: title, worksheet_set: set, questions: questions, archived: worksheet_params[:archived] });
     if @worksheet.save
       render json: @worksheet, status: 200
     else
