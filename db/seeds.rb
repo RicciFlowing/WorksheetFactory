@@ -132,7 +132,7 @@ shapes = Proc.new do
   ].sample
 end
 
-Seeder.create_skill(name: 'Die Form der wichtiges Figuren kennen',
+form = Seeder.create_skill(name: 'Die Form der wichtiges Figuren kennen',
   templates:
     [
       {template: "Wie viele Ecken hat ein/eine {{shape}} == {{corners}}", values: shapes},
@@ -141,3 +141,9 @@ Seeder.create_skill(name: 'Die Form der wichtiges Figuren kennen',
     ],
     count: 10
 )
+
+dummy_group = Group.create(grade: 7, name:'a', year: '2015/2016')
+fac_1 = Factory.create(name: 'First Factory', skills: [form])
+set = WorksheetSet.create(title: 'First WorksheetSet', factory_id: fac_1.id, group_id: dummy_group.id)
+
+Worksheet.create(title: 'Test Worksheet', worksheet_set_id: set.id, archived: true)

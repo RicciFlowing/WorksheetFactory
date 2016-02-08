@@ -1,0 +1,20 @@
+<h2> {{worksheet_set.title}}</h2>
+
+<h3> Archive:</h3>
+  <ul class="list-unstyled">
+    {{#each worksheet_set.archivedWorksheets as |worksheet|}}
+      {{worksheet-short worksheet=worksheet action='refreshWorksheet'}}
+    {{/each}}
+  </ul>
+<h3>Remaining:</h3>
+
+<ul class="list-unstyled">
+  {{#each remainingWorksheets as |worksheet|}}
+    {{worksheet-short worksheet=worksheet action='archiveWorksheet'}}
+  {{/each}}
+</ul>
+
+<form role="form" onsubmit="return false">
+  <button class= "btn" type="button" {{action "submit"}}> Add a worksheet </button>
+</form>
+{{yield}}

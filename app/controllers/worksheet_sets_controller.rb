@@ -2,7 +2,7 @@ class WorksheetSetsController < ApplicationController
   before_action :set_worksheet_set, only: [:show, :destroy]
 
   def index
-    @sets = WorksheetSet.includes(:questions).all
+    @sets = WorksheetSet.all
     render json: @sets
   end
 
@@ -26,7 +26,7 @@ class WorksheetSetsController < ApplicationController
 
   private
     def worksheet_set_params
-      params.require(:worksheet_set).permit(:name, :factory_id)
+      params.require(:worksheet_set).permit(:name, :factory_id, :group_id)
     end
 
     def set_worksheet_set

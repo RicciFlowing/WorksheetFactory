@@ -41,6 +41,6 @@ class WorksheetsController < ApplicationController
     end
 
     def worksheet_params
-      params.require(:worksheet).permit(:title, :group_id, :archived)
+      params.require(:worksheet).permit(:title, :worksheet_set_id, :archived)
     end
 end
