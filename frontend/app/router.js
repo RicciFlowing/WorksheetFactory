@@ -11,7 +11,12 @@ Router.map(function() {
   });
   this.route('groups', function(){
     this.route('show', {path: ':group_id'});
-    this.route('new');  
+    this.route('new');
+  });
+
+  this.route('worksheet_sets', function(){
+    this.route('show', {path: ':worksheetset_id'});
+    this.route('new');
   });
 
   this.route('factories', function() {

@@ -6,5 +6,5 @@ export default DS.Model.extend({
   grade: DS.attr('number'),
   year: DS.attr('string'),
   //worksheet_sets: DS.hasMany('worksheet', {async: true}),
-  worksheet_count: Ember.computed.alias('worksheets.length')
+  //worksheet_count: Ember.computed.alias('worksheets.length')
 });
