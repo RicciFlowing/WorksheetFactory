@@ -3,14 +3,14 @@
 <h3> Archive:</h3>
   <ul class="list-unstyled">
     {{#each worksheet_set.archivedWorksheets as |worksheet|}}
-      {{worksheet-short worksheet=worksheet action='refreshWorksheet'}}
+      {{worksheet-short worksheet=worksheet}}
     {{/each}}
   </ul>
 <h3>Remaining:</h3>
 
 <ul class="list-unstyled">
-  {{#each remainingWorksheets as |worksheet|}}
-    {{worksheet-short worksheet=worksheet action='archiveWorksheet'}}
+  {{#each worksheet_set.remainingWorksheets as |worksheet|}}
+    {{worksheet-short worksheet=worksheet}}
   {{/each}}
 </ul>
 
