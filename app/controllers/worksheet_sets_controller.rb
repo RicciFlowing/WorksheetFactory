@@ -26,7 +26,7 @@ class WorksheetSetsController < ApplicationController
 
   private
     def worksheet_set_params
-      params.require(:worksheet_set).permit(:name, :factory_id, :group_id)
+      params.require(:worksheet_set).permit(:title, :factory_id, :group_id)
     end
 
     def set_worksheet_set
