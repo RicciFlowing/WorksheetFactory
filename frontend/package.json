@@ -46,6 +46,7 @@
     "ember-export-application-global": "^1.0.4",
     "ember-validations": "^2.0.0-alpha",
     "emberx-select": "2.0.2",
-    "htmlbars": "0.14.8"
+    "htmlbars": "0.14.8",
+    "ivy-tabs": "ivyapp/ivy-tabs"
   }
 }

@@ -17,7 +17,6 @@
     "chartjs": "1.0.2"
   },
   "devDependencies": {
-    "bootstrap": "~3.3.6",
     "katex": "~0.5.1"
   }
 }

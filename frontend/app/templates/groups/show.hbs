@@ -1,7 +1,19 @@
 <h2> {{group.grade}} {{group.name}} {{group.year}}</h2>
 
-{{#each group.worksheetSets as |set|}}
-  {{worksheet-set-tag worksheet_set=set}}
-{{/each}}
+
+{{#ivy-tabs}}
+
+  {{#ivy-tab-list}}
+    {{#each group.worksheetSets as |set|}}
+      {{#ivy-tab}}{{set.title}}{{/ivy-tab}}
+    {{/each}}
+  {{/ivy-tab-list}}
+  {{#each group.worksheetSets as |set|}}
+    {{#ivy-tab-panel}}
+      {{worksheet-set-tag worksheet_set=set}}
+    {{/ivy-tab-panel}}
+  {{/each}}
+
+{{/ivy-tabs}}
 
 {{link-to 'Erstelle ein neues Set' 'worksheet_sets.new' group.id}}
