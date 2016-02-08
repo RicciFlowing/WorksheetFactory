@@ -1,5 +1,7 @@
 <h2> {{group.grade}} {{group.name}} {{group.year}}</h2>
 
-{{#each worksheetSets as |set|}}
+{{#each group.worksheetSets as |set|}}
   {{worksheet-set-tag worksheet_set=set}}
 {{/each}}
+
+{{link-to 'Erstelle ein neues Set' 'worksheet_sets.new' group.id}}
