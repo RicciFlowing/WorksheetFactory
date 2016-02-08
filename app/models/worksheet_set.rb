@@ -4,6 +4,7 @@ class WorksheetSet < ActiveRecord::Base
   has_many   :worksheets
 
   validates :factory_id, presence: true
+  validates :group_id, presence: true
 
   def get_questions
     self.factory.questions

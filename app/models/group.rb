@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  has_many :worksheets_sets
+  has_many :worksheet_sets
 
   validates :grade, numericality: {allow_blank: true}
 
