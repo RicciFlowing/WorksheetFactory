@@ -3,6 +3,8 @@ class WorksheetSet < ActiveRecord::Base
   belongs_to :group
   has_many   :worksheets
 
+  validates :factory_id, presence: true
+
   def get_questions
     self.factory.questions
   end

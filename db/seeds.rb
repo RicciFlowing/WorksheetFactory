@@ -143,7 +143,9 @@ form = Seeder.create_skill(name: 'Die Form der wichtiges Figuren kennen',
 )
 
 dummy_group = Group.create(grade: 7, name:'a', year: '2015/2016')
-fac_1 = Factory.create(name: 'First Factory', skills: [form])
+fac_1 = Factory.create(name: 'First Factory')
+fac_1.skills.push(form)
+fac_1.save
 set = WorksheetSet.create(title: 'First WorksheetSet', factory_id: fac_1.id, group_id: dummy_group.id)
 
 Worksheet.create(title: 'Test Worksheet', worksheet_set_id: set.id, archived: true)
