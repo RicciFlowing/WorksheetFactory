@@ -1,12 +1,10 @@
-<h2> {{group.name}}  {{group.year}}</h2>
-<div {{action 'delete'}} class="btn btn-danger pull-right">
+<h2> {{group.grade}} {{group.name}}  {{group.year}}</h2>
+<div {{action 'delete'}} class="delete-button btn btn-danger">
   <span class="fa fa-cross"> </span> Delete
 </div>
 <div class="group-details">
-  Grade: {{group.grade}}
-</div>
 <p>
   {{group.description}}
 </p>
-
+</div>
 {{yield}}

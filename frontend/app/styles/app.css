@@ -1,3 +1,7 @@
+.delete-button {
+  display: inline;
+}
+
 .tab-item {
   list-style: none;
   display: inline;
