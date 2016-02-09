@@ -1,27 +1,31 @@
-.tab-link {
+.tab-item {
   list-style: none;
   display: inline;
   margin-right: 15px;
+}
+
+.tab-link {
   border: solid;
   border-bottom-style: none;
   border-width: thin;
   border-color: grey;
   border-radius: 5px;
-  padding: 5px;
   margin-bottom: 2px;
+  padding: 5px;
+  box-shadow: 3px -3px #747474;
 }
-
 
 .active {
   background-color: #BFBFBF;
+  box-shadow: 1px -1px #747474;
 }
 
 .tab-list {
     margin-bottom: 0px;
-    padding-bottom: 0px;
 }
 
 .tab-content {
+  background-color: #BFBFBF;
   display: block;
   border: solid;
   border-color: grey;
@@ -66,14 +70,14 @@
 .group {
   background-color: #EDEDED;
   border-radius: 5px;
-  box-shadow: 5px 5px #747474;
+  box-shadow: 5px -5px #747474;
   padding: 10px;
   margin: 10px;
 }
 
 .selected {
   background-color: #BFBFBF;
-  box-shadow: 1px 1px #747474;
+  box-shadow: 1px -1px #747474;
 }
 
 div, p {
