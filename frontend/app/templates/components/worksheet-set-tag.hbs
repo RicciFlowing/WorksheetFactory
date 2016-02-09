@@ -1,7 +1,9 @@
 <h2> {{worksheet_set.title}}</h2>
 
 {{#unless showArchive}}
-<button {{action "toggleArchive"}} class='btn btn-default'>Show Archive</button>
+{{#if worksheet_set.hasArchivedWorksheets}}
+  <button {{action "toggleArchive"}} class='btn btn-default'>Show {{worksheet_set.archivedWorksheetCount}} archived Worksheet</button>
+{{/if}}
 {{/unless}}
 
 {{#if showArchive}}

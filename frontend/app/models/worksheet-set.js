@@ -7,5 +7,7 @@ export default DS.Model.extend({
   worksheets: DS.hasMany('worksheet', {async: true}),
   archivedWorksheets: Ember.computed.filterBy('worksheets', 'archived', true),
   remainingWorksheets: Ember.computed.filterBy('worksheets', 'archived', false),
-  worksheet_count: Ember.computed.alias('worksheets.length')
+  worksheet_count: Ember.computed.alias('worksheets.length'),
+  archivedWorksheetCount: Ember.computed.alias('archivedWorksheets.length'),
+  hasArchivedWorksheets: Ember.computed.gt('archivedWorksheetCount', 0),
 });
