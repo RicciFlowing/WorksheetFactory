@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   actions: {
     submit() {
       this.get('worksheetSet').save().then(()=>{
-        this.transitionToRoute('groups');
+        this.transitionToRoute('groups.show.worksheet_set', this.get('worksheetSet').id );
       });
 
     },
