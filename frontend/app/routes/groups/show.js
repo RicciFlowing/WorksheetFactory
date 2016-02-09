@@ -2,15 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(params){
-    return Ember.RSVP.hash({
-      group: this.store.findRecord('group', params.group_id),
-    });
+    return this.store.findRecord('group', params.group_id);
   },
     setupController(controller, model){
       this._super(controller, model);
-      Ember.set(controller, 'group', model.group);
-      Ember.set(controller, 'selectedGroup', model.group);
-      this.controllerFor('groups').set('selectedGroup', model.group );
+      Ember.set(controller, 'group', model);
+      Ember.set(controller, 'selectedGroup', model);
+      this.controllerFor('groups').set('selectedGroup', model );
     },
     deactivate(){
       this._super();

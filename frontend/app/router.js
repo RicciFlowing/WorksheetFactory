@@ -10,7 +10,10 @@ Router.map(function() {
     this.route('show',{path: ':worksheet_id'});
   });
   this.route('groups', function(){
-    this.route('show', {path: ':group_id'});
+    this.route('show', {path: ':group_id'}, function(){
+      this.route('worksheet_set',{path: '/worksheet_set/:worksheet_set_id'});
+      this.route('create_set');
+    });
     this.route('new');
   });
 

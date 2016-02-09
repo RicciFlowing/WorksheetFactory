@@ -1,4 +1,4 @@
-.ivy-tab {
+.tab-link {
   list-style: none;
   display: inline;
   margin-right: 15px;
@@ -11,22 +11,23 @@
   margin-bottom: 2px;
 }
 
+
 .active {
   background-color: #BFBFBF;
 }
 
-.ivy-tab-list {
+.tab-list {
     margin-bottom: 0px;
-    display: block;
+    padding-bottom: 0px;
 }
 
-.ivy-tab-panel {
+.tab-content {
   display: block;
   border: solid;
   border-color: grey;
   border-radius: 5px;
   padding: 15px;
-
+  margin-right: 50px;
 }
 
 .drop {

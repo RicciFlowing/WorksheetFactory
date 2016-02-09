@@ -1,10 +1,11 @@
 <h2> {{group.grade}} {{group.name}} {{group.year}}</h2>
-
-    {{#each group.worksheetSets as |set|}}
-    {{/each}}
+<ul class="tab-list">
   {{#each group.worksheetSets as |set|}}
-      {{worksheet-set-tag worksheet_set=set}}
+  <li class="tab-link">{{link-to set.title 'groups.show.worksheet_set' set.id}} </li>
   {{/each}}
+  <li class="tab-link"> {{link-to 'Erstelle ein neues Set' 'groups.show.create_set'}} </li>
+</ul>
 
-
-{{link-to 'Erstelle ein neues Set' 'worksheet_sets.new' group.id}}
+<div class="tab-content">
+{{outlet}}
+</div>
