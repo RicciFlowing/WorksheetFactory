@@ -1,5 +1,11 @@
 <h2> {{worksheet_set.title}}</h2>
 
+{{#unless showArchive}}
+<button {{action "toggleArchive"}} class='btn btn-default'>Show Archive</button>
+{{/unless}}
+
+{{#if showArchive}}
+<button {{action "toggleArchive"}} class='btn btn-default'>Hide Archive</button>
 <h3> Archive:</h3>
   <ul class="list-unstyled">
     {{#each worksheet_set.archivedWorksheets as |worksheet|}}
@@ -7,6 +13,7 @@
     {{/each}}
   </ul>
 <h3>Remaining:</h3>
+{{/if}}
 
 <ul class="list-unstyled">
   {{#each worksheet_set.remainingWorksheets as |worksheet|}}
