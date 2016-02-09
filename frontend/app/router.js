@@ -17,14 +17,11 @@ Router.map(function() {
     this.route('new');
   });
 
-  this.route('worksheet_sets', function(){
-    this.route('new', {path: '/new/:group_id'});
-  });
+  this.route('worksheet_sets');
 
   this.route('factories', function() {
     this.route('new');
   });
-  this.route('sets');
 });
 
 export default Router;
