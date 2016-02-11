@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+#Ignore all the seeds listed in seed_dir
+/db/seed_dir
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal

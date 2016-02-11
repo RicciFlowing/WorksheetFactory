@@ -2,7 +2,7 @@ require_relative 'seeder.rb'
 
 integer = Proc.new { |min, max| rand(max-min)+min }
 
-## L1 Zahl
+load "seed_dir/l1.rb"
 
 ## L2 Messen
 rect = Proc.new do
@@ -47,81 +47,22 @@ templates:
 count: 20
 )
 
+Seeder.create_skill(name: 'Volumeneinheiten umwandlen',
+templates:
+[
+  {template: "Wandle um {{tausend}}ml = ?l == {{zahl}} l", values: einheiten},
+  {template: "Wandle um {{zahl}}$dm^3$ = ?l == {{zahl}} l", values: einheiten},
+  {template: "Wandle um {{zahl}}$m^3$ = ?l == {{tausend}} l", values: einheiten},
+],
+count: 20
+)
+
 ## L3 Raum und Form
-
-
 
 ## L4 Funktionaler Zusammenhang
 
 ## L5 Daten und Zufall
 
-quads  = Proc.new do
-  num = integer.call(3,20)
-  {square: num*num, number: num}
-end
-
-Seeder.create_skill(name: 'Quadratwurzel berechnen',
-templates:
-[{template: "Berechne $\\sqrt[2]{ {{square}} }$ == {{number}}", values: quads}],
-count: 10
-)
-
-Seeder.create_skill(name: 'Quadratzahlen berechnen',
-  templates:
-    [{template: "Berechne $ {{number}}^2 $ == {{square}}", values: quads}],
-    count: 10
-)
-
-quadratic_equ  = Proc.new do
-  solution = integer.call(3,20)
-  num = integer.call(3,20)
-  {solution: solution, num_1: num, num_2: solution*solution + num}
-end
-
-quadratic_equ_2  = Proc.new do
-  solution = integer.call(3,10)
-  num = integer.call(2,5)
-  {solution: solution, num_1: num, num_2: solution*solution * num}
-end
-
-Seeder.create_skill(name: 'Einfache quadratische Gleichungen lösen',
-  templates:
-    [{template: "Gib beide Lösungen von  $ x^2 - {{num_1}} = {{num_2}} $ an == +{{solution}}/-{{solution}} ", values: quadratic_equ},
-    {template: "Gib beide Lösungen von $ {{num_1}} x^2 = {{num_2}} $ an == +{{solution}}/-{{solution}}", values: quadratic_equ_2}],
-    count: 10
-)
-
-decimal = Proc.new { |min, max, digits| ((max-min)*rand+min).round(digits) }
-
-decimal_sum = Proc.new do
-  dec_1 = decimal.call(0,1,3)
-  dec_2 = decimal.call(0,10,2)
-  {dec_1: dec_1 , dec_2: dec_2, sum: (dec_1 + dec_2).round(3)}
-end
-
-Seeder.create_skill(name: 'Zwei Dezimalzahlen addieren',
-  templates:
-    [{template: "{{dec_1}} + {{dec_2}} == {{sum}}", values: decimal_sum}],
-    count: 10
-)
-
-Seeder.create_skill(name: 'Zwei Dezimalzahlen subtrahieren',
-  templates:
-    [{template: "{{sum}} - {{dec_2}} == {{dec_1}}", values: decimal_sum}],
-    count: 10
-)
-
-decimal_product = Proc.new do
-  dec_1 = decimal.call(0,5,1)
-  dec_2 = decimal.call(0,1,2)
-  {dec_1: dec_1 , dec_2: dec_2, product: (dec_1 * dec_2).round(2)}
-end
-
-Seeder.create_skill(name: 'Zwei Dezimalzahlen addieren',
-  templates:
-    [{template: "{{dec_1}} * {{dec_2}} == {{product}}", values: decimal_product}],
-    count: 10
-)
 
 shapes = Proc.new do
   [
