@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207191343) do
+ActiveRecord::Schema.define(version: 20160213114119) do
 
   create_table "factories", force: :cascade do |t|
     t.string   "name"
@@ -50,14 +50,23 @@ ActiveRecord::Schema.define(version: 20160207191343) do
   add_index "questions", ["factory_skill_association_id"], name: "index_questions_on_factory_skill_association_id"
   add_index "questions", ["skill_id"], name: "index_questions_on_skill_id"
 
+  create_table "sectors", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string   "name"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "sector_id"
   end
 
   add_index "skills", ["category_id"], name: "index_skills_on_category_id"
+  add_index "skills", ["sector_id"], name: "index_skills_on_sector_id"
 
   create_table "worksheet_questions_associations", force: :cascade do |t|
     t.integer  "worksheet_id"
