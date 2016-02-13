@@ -24,13 +24,13 @@ module Basics
   class Fraction
     attr_reader :denominator, :numerator
 
-    def initialize(args)
+    def initialize(args = {})
       @denominator = args[:denominator] || Basics::Integer.in_range(min: 2, max: 10)
-      @numerator   = args[:numerator] || Basics::Integer.in_range(min: 2, max: @denominator)
+      @numerator   = args[:numerator] || Basics::Integer.in_range(min: 1, max: @denominator)
     end
 
     def to_s
-      "$\frac{#{@numerator}}{#{@denominator}}$"
+      "$\\frac{#{@numerator}}{#{@denominator}}$"
     end
 
     def *(y)
@@ -38,6 +38,24 @@ module Basics
       denominator:@denominator  * y.denominator,
       numerator: @numerator    * y.numerator
       )
+    end
+
+    def /(y)
+      self*Fraction.new(denominator: y.numerator, numerator: y.denominator)
+    end
+
+    def +(y)
+      new_denominator = @denominator.lcm(y.denominator)
+      factor_1 = new_denominator/@denominator
+      factor_2 = new_denominator/y.denominator
+      Fraction.new(
+      denominator: new_denominator,
+      numerator:  factor_1* @numerator    +  factor_2 * y.numerator
+      )
+    end
+
+    def -(y)
+      self+Frac.new(denominator: y.denominator, numerator: -y.num)
     end
 
     def reduce
@@ -60,20 +78,22 @@ module Basics
   end
 end
 
-p 'Integer betweeb 2 and 1000'
-p Basics::Integer.in_range(min: 2, max: 1000)
-p 'Integer betweeb -2 and -1000'
-p Basics::Integer.in_range(min: -1000, max: -2)
-p 'Decimal between 2 and 5 with 3 digits'
-p Basics::Float.in_range(min: 2, max: 5, digits: 3)
-p 'Fraction'
-p Basics::Fraction.new({}).to_s
-
-frac1 = Basics::Fraction.new({})
-frac2 = Basics::Fraction.new({})
-
-p "#{frac1.to_s} * #{frac2.to_s} = #{(frac1*frac2).to_s}"
-
-frac3 =  Basics::Fraction.new(denominator: 56, numerator:42 )
-
-p "#{frac3.to_s} gekürzt= #{frac3.reduce.to_s}"
+# p 'Integer between 2 and 1000'
+# p Basics::Integer.in_range(min: 2, max: 1000)
+# p 'Integer between -2 and -1000'
+# p Basics::Integer.in_range(min: -1000, max: -2)
+# p 'Decimal between 2 and 5 with 3 digits'
+# p Basics::Float.in_range(min: 2, max: 5, digits: 3)
+# p 'Fraction'
+# p Basics::Fraction.new({}).to_s
+#
+# frac1 = Basics::Fraction.new({})
+# frac2 = Basics::Fraction.new({})
+#
+# p "#{frac1.to_s} * #{frac2.to_s} = #{(frac1*frac2).to_s}"
+#
+# p "#{frac1.to_s} + #{frac2.to_s} = #{(frac1+frac2).to_s}"
+#
+# frac3 =  Basics::Fraction.new(denominator: 56, numerator:42 )
+#
+# p "#{frac3.to_s} gekürzt= #{frac3.reduce.to_s}"
