@@ -33,7 +33,6 @@ class SkillSeed
 
 
   def question(str)
-    p @parameter_block.call
     QuestionGenerator.create(template: str, values: @parameter_block, count: @count)
   end
 
@@ -53,12 +52,12 @@ end
 sector 'name', '5/6' do
   skill 'Addieren von Zahlen' do
     params do
-      a = 1
+      a = rand(2)
       b = 2
       {zahl_1: a, zahl_2: b, summe: a+b}
     end
    count 10
-   question 'Wieviel ist {{zahl}} + {{zahl_2}} == {{summe}}'
-   question 'Wieviel ist {{zahl}} - {{zahl_2}} == {{summe}}'
+   question 'Wieviel ist {{zahl_1}} + {{zahl_2}} == {{summe}}'
+   question 'Wieviel ist {{zahl_2}} - {{zahl_2}} == {{summe}}'
   end
 end

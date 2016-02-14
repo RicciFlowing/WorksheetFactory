@@ -1,8 +1,7 @@
 module QuestionGenerator
   extend self
   def create(args)
-    @values = args[:@values]
-    p @values
+    @values = args[:values]
     create_template(args[:template])
     create_questions(args[:count]||1)
   end
