@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160213114119) do
 
   create_table "sectors", force: :cascade do |t|
     t.string   "title"
-    t.integer  "grade"
+    t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

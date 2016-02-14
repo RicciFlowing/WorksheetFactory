@@ -1,10 +1,24 @@
 module Seeder
   extend self
+
+  def set_sector(sector)
+    @sector = sector
+  end
+
+  def reset_sector
+    @sector = false
+  end
+
   def create_skill(args)
     @name      = args[:name]
     @questions = QuestionGenerator.create(templates: args[:templates], count: args[:count])
     data =  {name: @name, questions: @questions}
-    ::Skill.create(data)
+    skill = ::Skill.create(data)
+    if @sector
+      @sector.skills.push(skill)
+      @sector.save
+    end
+    skill
   end
 
 end
