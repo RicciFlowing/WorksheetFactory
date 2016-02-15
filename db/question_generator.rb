@@ -3,7 +3,7 @@ module QuestionGenerator
   def create(args)
     @values = args[:values]
     create_template(args[:template])
-    create_questions(args[:count]||1)
+    ::Question.create create_questions(args[:count]||1)
   end
 
   private
@@ -21,8 +21,7 @@ module QuestionGenerator
     count.times do
       questions.push(render)
     end
-    p questions
-    #::Question.create(questions)
+    questions
   end
 end
 

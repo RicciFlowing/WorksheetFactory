@@ -1,85 +1,62 @@
-module Seeder
-  extend self
+require_relative 'question_generator'
 
-  def set_sector(sector)
-    @sector = sector
+class SectorSeed
+  def initialize(args)
+    @title   = args[:title]
+    @grade  = args[:grade]
+    @skills = []
   end
 
-  def reset_sector
-    @sector = false
+  def create
+    sector  = ::Sector.create(title: @title, grade: @grade)
+    sector.skills << @skills
+    sector.save
   end
 
-  def create_skill(args)
-    @name      = args[:name]
-    @questions = QuestionGenerator.create(templates: args[:templates], count: args[:count])
-    data =  {name: @name, questions: @questions}
-    skill = ::Skill.create(data)
-    if @sector
-      @sector.skills.push(skill)
-      @sector.save
-    end
+  def skill(title, &block)
+    skill_seed = ::SkillSeed.new(title: title, params: @params)
+    skill_seed.instance_exec(&block)
+    @skills.push(skill_seed.create)
+  end
+
+  def params(&block)
+    @params = block
+  end
+end
+
+class SkillSeed
+  def initialize(args)
+    @title    = args[:title]
+    @parameter_block = args[:params] || Proc.new {}
+    @questions = []
+    @count = 20
+  end
+
+  def params(&block)
+    @parameter_block = block
+  end
+
+  def count(c)
+    @count = c
+  end
+
+
+  def question(str)
+    @questions.push QuestionGenerator.create(template: str, values: @parameter_block, count: @count)
+  end
+
+  def create
+    skill  = ::Skill.create(name: @title )
+    skill.questions << @questions
+    skill.save
     skill
   end
-
 end
 
-module QuestionGenerator
-  extend self
-  def create(args)
-    create_templates(args[:templates])
-    create_questions(args[:count]||1)
-  end
 
-  private
-    def create_templates(templates)
-      @templates = []
-      templates.each do |template|
-        @templates << Template.new(template: template[:template], values: template[:values])
-      end
-    end
-
-    def render_template
-      @templates.sample.render
-    end
-
-    def create_questions(count)
-      questions = []
-      count.times do
-        questions.push(render_template)
-      end
-      ::Question.create(questions)
-    end
-end
-
-class Template
-  def initialize(args)
-    split_template(args[:template])
-    @values_object = args[:values]
-  end
-
-  def render
-    set_values_hash
-    rendered_text      = insert_values(@text, @values)
-    rendered_solution  = insert_values(@solution, @values)
-    {text: rendered_text , solution: rendered_solution}
-  end
-
-  private
-    def split_template(template_string)
-       splitted_template = template_string.split('==')
-       @text             = splitted_template.first
-       @solution         = splitted_template.last
-    end
-
-    def set_values_hash
-      @values = @values_object.call
-    end
-
-    def insert_values(string, values)
-      result = string
-      values.each do |key, value|
-        result = result.gsub(/{{\s*#{key}\s*}}/, value.to_s)
-      end
-      result
-    end
+def sector(title, grade, &block)
+  p "Begin seeding sector: #{title}, grade: #{grade} "
+  sector_seed = SectorSeed.new(title: title, grade: grade)
+  sector_seed.instance_eval(&block)
+  sector_seed.create
 end

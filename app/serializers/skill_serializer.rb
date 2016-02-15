@@ -1,4 +1,4 @@
 class SkillSerializer < ActiveModel::Serializer
-  attributes :id, :name, :category
+  attributes :id, :name
   has_many :questions
 end
