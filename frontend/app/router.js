@@ -20,8 +20,11 @@ Router.map(function() {
   this.route('worksheet_sets');
 
   this.route('factories', function() {
-    this.route('new');
+    this.route('new', function(){
+      this.route('sector', {path: '/sector/:sector_id'});
+    });
   });
+
 });
 
 export default Router;
