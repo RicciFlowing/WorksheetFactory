@@ -12,7 +12,7 @@ class WorksheetSetsController < ApplicationController
 
   def create
     @set = WorksheetSet.new(worksheet_set_params);
-    number = WorksheetSet.where(factory: @set.factory).count + 1
+    number = WorksheetSet.where(factory: @set.factory, group: @set.group).count + 1
     @set.title = "#{@set.factory.name} -Set Nr. #{number}"
     if @set.save
       render json: @set, status: 200
