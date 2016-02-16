@@ -4,7 +4,7 @@ class FactorySkillAssociationsController < ApplicationController
   def create
     @associaton = FactorySkillAssociation.new(associaton_params);
     if @associaton.save
-      render json: @associaton, status: 200
+      render json: {}, status: 200 #Empty response as frontend does not handle the response
     else
       render json: @associaton.errors, status: 400
     end
