@@ -55,8 +55,8 @@ end
 
 
 def sector(title, grade, &block)
-  p "Begin seeding sector: #{title}, grade: #{grade} "
-  sector_seed = SectorSeed.new(title: title, grade: grade)
-  sector_seed.instance_eval(&block)
-  sector_seed.create
+    p "Begin seeding sector: #{title}, grade: #{grade} "
+    sector_seed = SectorSeed.new(title: title, grade: grade)
+    sector_seed.instance_eval(&block)
+    sector_seed.create
 end

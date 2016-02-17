@@ -1,10 +1,29 @@
+require 'digest'
 
-
-integer = Proc.new { |min, max| rand(max-min)+min }
 require_relative "basics"
-#require_relative "seed_dir/l1.rb"
 require_relative "seeder"
-require_relative "seed_dir/5_6.rb"
+
+def changed?(filename)
+  digest_5_6 = Digest::SHA256.file filename
+  unless File.exist?(filename+'sha256',)
+    File.write(filename+'sha256', digest_5_6.hexdigest)
+    yield
+  else
+    unless(digest_5_6.hexdigest == File.read(filename+'sha256'))
+      File.write(filename+'sha256', digest_5_6.hexdigest)
+      p "called"
+      yield
+    end
+  end
+end
+
+changed?("db/seed_dir/5_6.rb") do
+  require_relative "seed_dir/5_6.rb"
+end
+
+changed?("db/seed_dir/7_8.rb") do
+  require_relative "seed_dir/7_8.rb"
+end
 
 
 #
