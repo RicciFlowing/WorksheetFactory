@@ -1,7 +1,9 @@
 require 'digest'
 
-require_relative "basics"
-require_relative "seeder"
+$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__))) unless $LOAD_PATH.include?(File.expand_path(File.dirname(__FILE__)))
+
+require "basics"
+require "seeder"
 
 def changed?(filename)
   digest_5_6 = Digest::SHA256.file filename
@@ -18,11 +20,11 @@ def changed?(filename)
 end
 
 changed?("db/seed_dir/5_6.rb") do
-  require_relative "seed_dir/5_6.rb"
+  require "seed_dir/5_6.rb"
 end
 
 changed?("db/seed_dir/7_8.rb") do
-  require_relative "seed_dir/7_8.rb"
+  require "seed_dir/7_8.rb"
 end
 
 
