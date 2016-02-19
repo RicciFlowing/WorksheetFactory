@@ -13,8 +13,8 @@
     "loader.js": "ember-cli/loader.js#3.4.0",
     "qunit": "~1.20.0",
     "bootstrap": "~3.3.5",
-    "font-awesome": "~4.5.0",
-    "chartjs": "1.0.2"
+    "chartjs": "1.0.2",
+    "font-awesome": "~4.5.0"
   },
   "devDependencies": {
     "katex": "~0.5.1"

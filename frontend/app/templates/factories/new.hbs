@@ -19,21 +19,31 @@
     Drag skill here
     {{/unless}}
     {{/draggable-object-target}}
-
+    <div class="centered small">
+      {{#draggable-object-target action="removeFromSelection"}}
+       {{fa-icon "trash" size=4}}
+      {{/draggable-object-target}}
+    </div>
   </div>
   <div class="col-md-6">
     <h3>Available skills</h3>
-    {{outlet}}
-    <ul>
-      {{#each sectors as |sector|}}
-        <li>  {{#link-to 'factories.new.sector' sector}} {{sector.title}} {{/link-to}} </li>
-      {{/each}}
-    </ul>
+    <div class="row">
+      <div class="col-md-6">
+            {{outlet}}
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group">
+          {{#each sectors as |sector|}}
+            <li class="list-group-item">  {{#link-to 'factories.new.sector' sector}} {{sector.title}} {{/link-to}}  <span class="badge">{{sector.skillCount}}</span></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>
-{{#draggable-object-target action="removeFromSelection" overrideClass="drop"}}
-Remove
-{{/draggable-object-target}}
+
+
   <input type="submit" value="Save"/>
   <button {{action "cancel"}}>Cancel</button>
 </form>
