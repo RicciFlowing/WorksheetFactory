@@ -29,12 +29,11 @@
         <li>  {{#link-to 'factories.new.sector' sector}} {{sector.title}} {{/link-to}} </li>
       {{/each}}
     </ul>
-
-
-
   </div>
-
 </div>
+{{#draggable-object-target action="removeFromSelection" overrideClass="drop"}}
+Remove
+{{/draggable-object-target}}
   <input type="submit" value="Save"/>
   <button {{action "cancel"}}>Cancel</button>
 </form>

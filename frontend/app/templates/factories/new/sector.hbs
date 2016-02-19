@@ -1,11 +1,11 @@
 
 <h2> {{sector.title}} </h2>
-{{#draggable-object-target action="removeFromSelection" overrideClass="drop"}}
+
 {{#each sector.skills as |skill|}}
   {{#draggable-object content=skill overrideClass="skill"}}
     {{skill.name}}
   {{/draggable-object}}
 {{/each}}
-{{/draggable-object-target}}
+
 
 {{outlet}}
