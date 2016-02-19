@@ -19,15 +19,15 @@ def changed?(filename)
   end
 end
 
-changed?("db/seed_dir/5_6.rb") do
-  require "seed_dir/5_6.rb"
-end
-
-changed?("db/seed_dir/7_8.rb") do
-  require "seed_dir/7_8.rb"
-end
-
-
+# changed?("db/seed_dir/5_6.rb") do
+#   require "seed_dir/5_6.rb"
+# end
+#
+# changed?("db/seed_dir/7_8.rb") do
+#   require "seed_dir/7_8.rb"
+# end
+require "seed_dir/5_6.rb"
+require "seed_dir/7_8.rb"
 #
 # shapes = Proc.new do
 #   [

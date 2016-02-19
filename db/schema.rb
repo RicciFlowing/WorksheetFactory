@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160213114119) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "factories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20160213114119) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "factory_skill_associations", ["factory_id"], name: "index_factory_skill_associations_on_factory_id"
-  add_index "factory_skill_associations", ["skill_id"], name: "index_factory_skill_associations_on_skill_id"
+  add_index "factory_skill_associations", ["factory_id"], name: "index_factory_skill_associations_on_factory_id", using: :btree
+  add_index "factory_skill_associations", ["skill_id"], name: "index_factory_skill_associations_on_skill_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20160213114119) do
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "questions", ["factory_skill_association_id"], name: "index_questions_on_factory_skill_association_id"
-  add_index "questions", ["skill_id"], name: "index_questions_on_skill_id"
+  add_index "questions", ["factory_skill_association_id"], name: "index_questions_on_factory_skill_association_id", using: :btree
+  add_index "questions", ["skill_id"], name: "index_questions_on_skill_id", using: :btree
 
   create_table "sectors", force: :cascade do |t|
     t.string   "title"
@@ -65,8 +68,8 @@ ActiveRecord::Schema.define(version: 20160213114119) do
     t.integer  "sector_id"
   end
 
-  add_index "skills", ["category_id"], name: "index_skills_on_category_id"
-  add_index "skills", ["sector_id"], name: "index_skills_on_sector_id"
+  add_index "skills", ["category_id"], name: "index_skills_on_category_id", using: :btree
+  add_index "skills", ["sector_id"], name: "index_skills_on_sector_id", using: :btree
 
   create_table "worksheet_questions_associations", force: :cascade do |t|
     t.integer  "worksheet_id"
@@ -75,8 +78,8 @@ ActiveRecord::Schema.define(version: 20160213114119) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "worksheet_questions_associations", ["question_id"], name: "index_worksheet_questions_associations_on_question_id"
-  add_index "worksheet_questions_associations", ["worksheet_id"], name: "index_worksheet_questions_associations_on_worksheet_id"
+  add_index "worksheet_questions_associations", ["question_id"], name: "index_worksheet_questions_associations_on_question_id", using: :btree
+  add_index "worksheet_questions_associations", ["worksheet_id"], name: "index_worksheet_questions_associations_on_worksheet_id", using: :btree
 
   create_table "worksheet_sets", force: :cascade do |t|
     t.string   "title"
@@ -86,17 +89,25 @@ ActiveRecord::Schema.define(version: 20160213114119) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "worksheet_sets", ["factory_id"], name: "index_worksheet_sets_on_factory_id"
-  add_index "worksheet_sets", ["group_id"], name: "index_worksheet_sets_on_group_id"
+  add_index "worksheet_sets", ["factory_id"], name: "index_worksheet_sets_on_factory_id", using: :btree
+  add_index "worksheet_sets", ["group_id"], name: "index_worksheet_sets_on_group_id", using: :btree
 
   create_table "worksheets", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "worksheet_set_id"
     t.boolean  "archived"
+    t.integer  "worksheet_set_id"
   end
 
-  add_index "worksheets", ["worksheet_set_id"], name: "index_worksheets_on_worksheet_set_id"
+  add_index "worksheets", ["worksheet_set_id"], name: "index_worksheets_on_worksheet_set_id", using: :btree
 
+  add_foreign_key "questions", "factory_skill_associations"
+  add_foreign_key "questions", "skills"
+  add_foreign_key "skills", "sectors"
+  add_foreign_key "worksheet_questions_associations", "questions"
+  add_foreign_key "worksheet_questions_associations", "worksheets"
+  add_foreign_key "worksheet_sets", "factories"
+  add_foreign_key "worksheet_sets", "groups"
+  add_foreign_key "worksheets", "worksheet_sets"
 end
