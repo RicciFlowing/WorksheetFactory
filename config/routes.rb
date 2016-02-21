@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :results
+  resources :results
   resources :sectors
   mount_ember_app :frontend, to: "/"
   resources :worksheet_sets
