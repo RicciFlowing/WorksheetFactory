@@ -4,10 +4,7 @@ export default Ember.Controller.extend({
   actions: {
     submit() {
       this.createResults();
-      // this.get('worksheetSet').save().then(()=>{
-      //   this.transitionToRoute('groups.show.worksheet_set', this.get('worksheetSet').id );
-      // });
-
+      this.transitionToRoute('groups.show.worksheet_set' );
     },
     cancel() {
       this.transitionToRoute('groups');
@@ -16,7 +13,6 @@ export default Ember.Controller.extend({
   },
   createResults(){
     let worksheet = this.get('worksheet')
-    Ember.Logger.log(worksheet);
     worksheet.get('questions').forEach((question)=>{
       if((question.negatives)&&(question.positives)){
         let result = this.store.createRecord('result');
@@ -26,6 +22,8 @@ export default Ember.Controller.extend({
         result.set('negative', question.negatives);
         result.set('positive', question.positives);
         result.save();
+        question.set('negatives', undefined);
+        question.set('positives', undefined);
       }
     });
   }
