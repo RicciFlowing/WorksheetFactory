@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213114119) do
+ActiveRecord::Schema.define(version: 20160221104452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 20160213114119) do
 
   add_index "questions", ["factory_skill_association_id"], name: "index_questions_on_factory_skill_association_id", using: :btree
   add_index "questions", ["skill_id"], name: "index_questions_on_skill_id", using: :btree
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "positive"
+    t.integer  "negative"
+    t.integer  "group_id"
+    t.integer  "question_id"
+    t.integer  "worksheet_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "results", ["group_id"], name: "index_results_on_group_id", using: :btree
+  add_index "results", ["question_id"], name: "index_results_on_question_id", using: :btree
+  add_index "results", ["worksheet_id"], name: "index_results_on_worksheet_id", using: :btree
 
   create_table "sectors", force: :cascade do |t|
     t.string   "title"
@@ -104,6 +118,9 @@ ActiveRecord::Schema.define(version: 20160213114119) do
 
   add_foreign_key "questions", "factory_skill_associations"
   add_foreign_key "questions", "skills"
+  add_foreign_key "results", "groups"
+  add_foreign_key "results", "questions"
+  add_foreign_key "results", "worksheets"
   add_foreign_key "skills", "sectors"
   add_foreign_key "worksheet_questions_associations", "questions"
   add_foreign_key "worksheet_questions_associations", "worksheets"

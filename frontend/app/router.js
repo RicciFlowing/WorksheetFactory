@@ -11,7 +11,9 @@ Router.map(function() {
   });
   this.route('groups', function(){
     this.route('show', {path: ':group_id'}, function(){
-      this.route('worksheet_set',{path: '/worksheet_set/:worksheet_set_id'});
+      this.route('worksheet_set',{path: '/worksheet_set/:worksheet_set_id'}, function(){
+        this.route('new_result',{path: 'new_result/:worksheet_id'});
+      });
       this.route('create_set');
     });
     this.route('new');
@@ -25,7 +27,7 @@ Router.map(function() {
     });
   });
 
-  this.route('result');
+
 });
 
 export default Router;
