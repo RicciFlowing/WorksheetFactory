@@ -7,7 +7,7 @@
  <button class="btn btn-default" {{action "refresh"}}>Refresh</button>
 {{else}}
 <span {{action "archive"}}>
-  {{#linkTo 'groups.show.worksheet_set.new_result' worksheet.id class="btn btn-danger"}} Archive {{/linkTo}}
+  {{#link-to 'groups.show.worksheet_set.new_result' worksheet.id class="btn btn-danger"}} Archive {{/link-to}}
 </span>
 {{/if}}
 

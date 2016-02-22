@@ -5,7 +5,7 @@
   {{#each worksheet.questions as |question index|}}
     <li>
       <p>
-      {{question.text}}
+      {{k-tex question.text}} = {{k-tex question.solution}}
       </p>
       <div class="form-inline">
         <div class="form-group">
