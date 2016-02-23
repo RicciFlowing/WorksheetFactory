@@ -1,4 +1,7 @@
-<h2> {{worksheet_set.title}}</h2>
+<div class="panel-heading">
+ <h2 class="panel-title"> {{worksheet_set.title}}</h2>
+</div>
+<div class="panel-body">
 <button  {{action 'delete'}} class="btn btn-danger pull-right"> Delete Set</button>
 {{#unless showArchive}}
 {{#if worksheet_set.hasArchivedWorksheets}}
@@ -28,4 +31,6 @@
 <form role="form" onsubmit="return false">
   <button class= "btn" type="button" {{action "submit"}}> Add a worksheet </button>
 </form>
+
+</div>
 {{yield}}

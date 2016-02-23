@@ -28,10 +28,10 @@
   box-shadow: 3px -3px #747474;
 }
 
-.active {
+/*.active {
   background-color: #BFBFBF;
   box-shadow: 1px -1px #747474;
-}
+}*/
 
 .tab-list {
     margin-bottom: 0px;

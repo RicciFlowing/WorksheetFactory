@@ -5,5 +5,6 @@ export default DS.Model.extend({
   archived: DS.attr('boolean', { defaultValue: false }),
   questions: DS.hasMany('questions', {async: true}),
   worksheetSet: DS.belongsTo('worksheet-set', {async: true}),
+  results: DS.hasMany('result', {async: true}),
   //createdAt: DS.attr('string'),
 });
