@@ -4,7 +4,6 @@ export default Ember.Component.extend({
   tagName: 'span',
   positionalParams: ['text'],
   didRender(){
-    Ember.Logger.log('didRender');
     renderMathInElement(this.get('element'),
         {delimiters: [
             {left: "$$", right: "$$", display: true},

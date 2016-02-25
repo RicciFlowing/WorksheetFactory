@@ -26,15 +26,5 @@ export default Ember.Controller.extend({
         question.set('positives', undefined);
       }
     });
-  },
-  didRender(){
-    alert('hello');
-    renderMathInElement(this.get('element'),
-        {delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "\\[", right: "\\]", display: true},
-            {left: "\\(", right: "\\)", display: false},
-             {left: "$", right: "$", display: false},
-        ]});
   }
 });
