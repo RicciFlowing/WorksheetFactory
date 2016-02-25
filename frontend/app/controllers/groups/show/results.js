@@ -1,6 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  maxNumbers: Ember.computed.mapBy('worksheetSet.worksheets','questionCount'),
+  count :     Ember.computed.max('maxNumbers'),
+  numbers: Ember.computed('count',function(){
+    let array = Ember.A();
+    for(let j = 1; j<this.get('count')+1; j++){
+      array.push(j);
+    }
+    Ember.Logger.log(array);
+    return array;
+  }),
   actions: {
     submit() {
       this.createResults();
