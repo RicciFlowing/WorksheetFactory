@@ -3,25 +3,30 @@
 <form>
 
 <div class="row">
-  <div class="col-md-3">
-    <ul class="list-group">
-      {{#each worksheetSet.worksheets as |sheet|}}
-          {{#link-to 'groups.show.results' worksheetSet.id sheet.id tagName='li' class="list-group-item" href=false}}
-           {{link-to sheet.title 'groups.show.results' worksheetSet.id sheet.id}}
-          {{/link-to}}
-      {{/each}}
-    </ul>
-  </div>
+
 
   <div class="col-md-9">
     <ul class="list-group">
       {{#each worksheet.questions as |quest index|}}
-      <li class="list-group-item">
-        <p>
-          <b> {{index}} </b>   {{k-tex quest.text}}
-        </p>
+      <li class="list-group-item flex-container space-between">
+        {{number-clicker  number=0 class="green"}}
+        <div class="margin-side">
+          <h4> {{index}}. Frage </h4>
+          <p>
+             {{k-tex quest.text}}
+          </p>
+        </div>
+        {{number-clicker  number=0 class="red"}}
       </li>
 
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="col-md-3">
+    <ul class="list-group">
+      {{#each worksheetSet.worksheets as |sheet|}}
+           {{link-to sheet.title 'groups.show.results' worksheetSet.id sheet.id class="list-group-item"}}
       {{/each}}
     </ul>
   </div>
