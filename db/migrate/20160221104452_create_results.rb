@@ -3,7 +3,6 @@ class CreateResults < ActiveRecord::Migration
     create_table :results do |t|
       t.integer :positive
       t.integer :negative
-      t.belongs_to :group, index: true, foreign_key: true
       t.belongs_to :question, index: true, foreign_key: true
       t.belongs_to :worksheet, index: true, foreign_key: true
 

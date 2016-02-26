@@ -1,4 +1,4 @@
 class Result < ActiveRecord::Base
-  belongs_to :group
+  belongs_to :worksheet
   belongs_to :question
 end

@@ -22,7 +22,7 @@ class ResultsController < ApplicationController
 
   private
     def result_params
-      params.require(:result).permit(:positive, :negative, :group_id, :question_id, :worksheet_id)
+      params.require(:result).permit(:positive, :negative, :question_id, :worksheet_id)
     end
 
     def set_result

@@ -56,14 +56,12 @@ ActiveRecord::Schema.define(version: 20160221104452) do
   create_table "results", force: :cascade do |t|
     t.integer  "positive"
     t.integer  "negative"
-    t.integer  "group_id"
     t.integer  "question_id"
     t.integer  "worksheet_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "results", ["group_id"], name: "index_results_on_group_id", using: :btree
   add_index "results", ["question_id"], name: "index_results_on_question_id", using: :btree
   add_index "results", ["worksheet_id"], name: "index_results_on_worksheet_id", using: :btree
 
@@ -118,7 +116,6 @@ ActiveRecord::Schema.define(version: 20160221104452) do
 
   add_foreign_key "questions", "factory_skill_associations"
   add_foreign_key "questions", "skills"
-  add_foreign_key "results", "groups"
   add_foreign_key "results", "questions"
   add_foreign_key "results", "worksheets"
   add_foreign_key "skills", "sectors"
