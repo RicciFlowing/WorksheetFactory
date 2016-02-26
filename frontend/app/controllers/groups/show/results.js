@@ -28,7 +28,6 @@ export default Ember.Controller.extend({
         let result = this.store.createRecord('result');
         result.set('worksheet', worksheet);
         result.set('question', question);
-        result.set('group', this.get('group'));
         result.set('negative', question.negatives);
         result.set('positive', question.positives);
         result.save();
