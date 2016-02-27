@@ -7,10 +7,16 @@ export default Ember.Component.extend({
   minimum: 0,
   actions:{
     add(summand){
-      this.set('number', this.get('number')+summand);
-      if(this.get('number')<this.get('minimum')){
-        this.set('number',0)
+      if(typeof this.get('number') == 'object'){
+        this.set('number', '0');
       }
+      let number = parseInt(this.get('number'));
+      number += summand;
+      if(number<this.get('minimum')){
+        number = 0;
+      }
+      this.set('number', number.toString());
+
       return false;
     }
   }

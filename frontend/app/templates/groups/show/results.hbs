@@ -3,20 +3,18 @@
 <form>
 
 <div class="row">
-
-
   <div class="col-md-9">
     <ul class="list-group">
-      {{#each worksheet.questions as |quest index|}}
+      {{#each results as |result index|}}
       <li class="list-group-item flex-container space-between">
-        {{number-clicker  number=0 class="green"}}
+        {{number-clicker  number=result.positive class="green"}}
         <div class="margin-side">
           <h4> {{index}}. Frage </h4>
           <p>
-             {{k-tex quest.text}}
+             {{k-tex result.question.text}}
           </p>
         </div>
-        {{number-clicker  number=0 class="red"}}
+        {{number-clicker  number=result.negative class="red"}}
       </li>
 
       {{/each}}
@@ -31,38 +29,6 @@
     </ul>
   </div>
 </div>
-
-
-
-<!--
-<table class="table">
-  <thead>
-    <th>
-      Arbeitsblatt
-    </th>
-    {{#each numbers as |number|}}
-    <th>
-      {{number}}
-    </th>
-    {{/each}}
-  </thead>
-
-
-  {{#each worksheetSet.worksheets as |worksheet|}}
-  <tr>
-    <td>
-    {{worksheet.title}}
-    </td>
-    {{#each worksheet.questions as |question index|}}
-    <td>
-      {{bs-form-element controlType="number" label="Richtig" inline="true" property=""}}
-      {{bs-form-element controlType="number" label="Falsch"  inline="true" property=""}}
-    </td>
-    {{/each}}
-  </tr>
-  {{/each}}
-
-</table> -->
 
 <div class="form-group">
   <button type="button" {{action 'submit'}} class='btn btn-default'> Ergebnisse erfassen </button>

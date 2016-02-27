@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-
-
-
-  resources :results
+  mount_ember_app :frontend, to: "/"
   resources :results
   resources :sectors
-  mount_ember_app :frontend, to: "/"
+  #map.getresults '/results/*query', :controller => 'result', :action => 'index'
   resources :worksheet_sets
   resources :factory_skill_associations, only: :create
   resources :groups
