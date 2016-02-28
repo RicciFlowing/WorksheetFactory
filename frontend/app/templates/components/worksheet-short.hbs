@@ -6,8 +6,10 @@
 {{#if archived}}
  <button class="btn btn-default" {{action "refresh"}}>Refresh</button>
 {{else}}
-<div {{action "archive"}} class="btn btn-sm btn-danger">
+<div {{action "archive"}} class="btn btn-sm btn-default">
  Archive
 </div>
+
+{{link-to 'Ergebnisse' 'groups.show.results' worksheet.worksheetSet.id worksheet.id class="btn btn-sm btn-default"}}
 {{/if}}
 {{yield}}
