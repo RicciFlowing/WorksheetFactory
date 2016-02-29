@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-3">
     <ul class="list-unstyled">
       {{#group-list selected=selectedGroup as |list|}}
@@ -14,4 +14,10 @@
   <div class="col-md-9">
      {{outlet}}
   </div>
+</div> -->
+<div>
+  {{#each sortedGroups as |group|}}
+  {{link-to group.fullName 'groups.show' group.id}}
+  {{/each}}
 </div>
+{{outlet}}

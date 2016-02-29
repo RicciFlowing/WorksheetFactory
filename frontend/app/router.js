@@ -11,7 +11,8 @@ Router.map(function() {
   });
   this.route('groups', function(){
     this.route('show', {path: ':group_id'}, function(){
-      this.route('worksheet_set',{path: '/worksheet_set/:worksheet_set_id'}, function(){
+      this.route('worksheet_set',{path: '/worksheet_set/'}, function(){
+        this.route('index', {path: ':set_id'}),
         this.route('results', {path: '/results/:set_id/:worksheet_id'});
       });
       this.route('create_set');

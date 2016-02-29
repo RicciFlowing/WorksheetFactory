@@ -4,11 +4,11 @@ export default Ember.Component.extend({
   showArchive: false,
   store: Ember.inject.service(),
   sorting: ['id:desc'],
-  sortedRemainingWorksheets: Ember.computed.sort('worksheet_set.remainingWorksheets', 'sorting'),
-  sortedArchivedWorksheets: Ember.computed.sort('worksheet_set.archivedWorksheets', 'sorting'),
+  sortedRemainingWorksheets: Ember.computed.sort('worksheetSet.remainingWorksheets', 'sorting'),
+  sortedArchivedWorksheets: Ember.computed.sort('worksheetSet.archivedWorksheets', 'sorting'),
   actions: {
     submit(){
-        this.get('store').createRecord('worksheet', {worksheetSet: this.get('worksheet_set')}).save();
+        this.get('store').createRecord('worksheet', {worksheetSet: this.get('worksheetSet')}).save();
         return false;
         },
     toggleArchive(){
