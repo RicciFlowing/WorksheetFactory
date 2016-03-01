@@ -1,6 +1,7 @@
 class Skill < ActiveRecord::Base
   belongs_to :sector
   has_many :questions
+  has_many :results, through: :questions
   has_many :factory_skill_associations
   has_many :factories, through: :factory_skill_associations
 

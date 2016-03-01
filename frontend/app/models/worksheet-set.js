@@ -14,4 +14,9 @@ export default DS.Model.extend({
   questionCount: Ember.computed.alias('worksheets.firstObject.questionCount'),
   archivedWorksheetCount: Ember.computed.alias('archivedWorksheets.length'),
   hasArchivedWorksheets: Ember.computed.gt('archivedWorksheetCount', 0),
+
+  _positives: Ember.computed.mapBy('worksheetSet.results', 'positive'),
+  positive: Ember.computed.sum('_positives'),
+  _negatives: Ember.computed.mapBy('worksheetSet.results', 'negative'),
+  negative: Ember.computed.sum('_negatives'),
 });

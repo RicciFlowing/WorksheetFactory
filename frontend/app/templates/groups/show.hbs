@@ -1,7 +1,7 @@
 <h2> {{group.grade}} {{group.name}} {{group.year}}</h2>
 <ul class="nav nav-tabs">
   {{#each group.worksheetSets as |set|}}
-  {{#link-to 'groups.show.worksheet_set' set.id tagName='li' href=false}}
+  {{#link-to 'groups.show.worksheet_set.index' set.id tagName='li' href=false}}
     {{link-to set.title 'groups.show.worksheet_set' set.id }}
   {{/link-to}}
   {{/each}}
@@ -9,4 +9,7 @@
    {{link-to 'Erstelle ein neues Set' 'groups.show.create_set'}}
   {{/link-to}}
 </ul>
+<h1> Stastik</h1>
+Richtige:
+ {{positive}}
 {{outlet}}
