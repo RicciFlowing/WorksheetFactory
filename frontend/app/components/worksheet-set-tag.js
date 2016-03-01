@@ -15,7 +15,7 @@ export default Ember.Component.extend({
       this.set('showArchive', !this.get('showArchive'));
     },
     delete(){
-      this.get('worksheet_set').destroyRecord();
+      this.get('worksheetSet').destroyRecord();
     }
   }
 });
