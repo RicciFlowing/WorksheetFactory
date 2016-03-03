@@ -32,7 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
+gem 'active_attr'
 gem 'active_model_serializers'
 gem 'ember-cli-rails'
 gem 'pg'
