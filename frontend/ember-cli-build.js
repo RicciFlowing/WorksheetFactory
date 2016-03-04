@@ -7,7 +7,11 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     'ember-bootstrap': {
     'importBootstrapTheme': true
-}
+  },
+
+    sassOptions: {
+      extension: 'sass'
+    }
   });
 
   var katexFonts = pickFiles('bower_components/katex/dist/fonts', {
