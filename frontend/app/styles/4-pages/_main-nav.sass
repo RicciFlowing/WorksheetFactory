@@ -1,0 +1,25 @@
+$logo-color: #5A5A5A
+$main-nav-color: #EDEDED
+
+#main-nav
+  padding: 5px
+  padding-right: 20px
+  padding-left: 20px
+  background-color: $main-nav-color
+
+.logo
+  font-size: 2em
+  color: $logo-color
+  &:hover
+    color: lighten($logo-color, 20%)
+
+#main-nav-links
+  float: right
+  list-style-type: none
+  li
+    display: inline
+    margin-right: 20px
+    a
+      color: $primary
+      &:hover
+        text-shadow: 1px 0px 0px $secondary
