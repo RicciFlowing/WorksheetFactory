@@ -3,11 +3,13 @@
 <button  {{action 'delete'}} class="right"> Delete Set</button>
 
 
-<form role="form" onsubmit="return false">
-  <button type="button" {{action "submit"}}>  {{fa-icon 'plus'}} Add a worksheet </button>
-</form>
 
-<ul>
+<ul id="worksheet-list">
+  <li id="add-button">
+    <form role="form" onsubmit="return false">
+      <button type="button" {{action "submit"}}>  <span id="plus-icon">+</span>  </button>
+    </form>
+  </li>
   {{#each sortedRemainingWorksheets as |worksheet|}}
     {{worksheet-short worksheet=worksheet}}
   {{/each}}
@@ -17,7 +19,7 @@
 {{#if showArchive}}
 <button {{action "toggleArchive"}} class='btn btn-default'> {{fa-icon "angle-up"}} Hide Archive</button>
 <h3> Archive:</h3>
-  <ul class="list-unstyled">
+  <ul id="archive-list">
     {{#each sortedArchivedWorksheets as |worksheet|}}
       {{worksheet-short worksheet=worksheet}}
     {{/each}}

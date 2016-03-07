@@ -1,5 +1,5 @@
 
-<div id="worksheet-short">
+<div id="worksheet-short" class="clearfix">
 <h3>
   {{#link-to 'worksheets.show' worksheet.id}}
     {{worksheet.title}}
@@ -7,13 +7,13 @@
 </h3>
 
 {{#if archived}}
- <button {{action "refresh"}}>Refresh</button>
+ <button {{action "refresh"}} class="right">Refresh</button>
 {{else}}
-<button {{action "archive"}}>
+<button {{action "archive"}} class="right">
  Archive
 </button>
 
-{{link-to 'Ergebnisse' 'groups.show.worksheet_set.results' worksheet.worksheetSet.id worksheet.id class="button"}}
+{{link-to 'Ergebnisse' 'groups.show.worksheet_set.results' worksheet.worksheetSet.id worksheet.id class="button right"}}
 {{/if}}
 {{yield}}
 </div>
