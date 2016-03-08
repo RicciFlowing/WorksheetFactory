@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'sessions' }
   mount_ember_app :frontend, to: "/"
+  devise_for :users, controllers: { sessions: 'sessions' }, only: :sessions
   resources :results
   resources :sectors
   #map.getresults '/results/*query', :controller => 'result', :action => 'index'
