@@ -11,9 +11,12 @@
          </div>
          <div id="navbar" class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-             <li>{{#link-to 'index'}} Home {{/link-to}}</li>
             <li>{{#link-to 'groups.index'}} groups {{/link-to}}</li>
-             <li>{{#link-to 'worksheets.index'}} Worksheets {{/link-to}}</li>
+             <li> {{#if session.isAuthenticated}}
+                 <a {{action 'logout'}}>Logout</a>
+               {{else}}
+                 {{#link-to 'login'}}Login{{/link-to}}
+             {{/if}}</li>
            </ul>
          </div><!--/.nav-collapse -->
        </div><!--/.container-fluid -->
