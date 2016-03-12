@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221104452) do
+ActiveRecord::Schema.define(version: 20160312100934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 20160221104452) do
     t.string   "year"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "text"
@@ -83,6 +86,25 @@ ActiveRecord::Schema.define(version: 20160221104452) do
   add_index "skills", ["category_id"], name: "index_skills_on_category_id", using: :btree
   add_index "skills", ["sector_id"], name: "index_skills_on_sector_id", using: :btree
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "authentication_token"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
   create_table "worksheet_questions_associations", force: :cascade do |t|
     t.integer  "worksheet_id"
     t.integer  "question_id"
@@ -114,6 +136,7 @@ ActiveRecord::Schema.define(version: 20160221104452) do
 
   add_index "worksheets", ["worksheet_set_id"], name: "index_worksheets_on_worksheet_set_id", using: :btree
 
+  add_foreign_key "groups", "users"
   add_foreign_key "questions", "factory_skill_associations"
   add_foreign_key "questions", "skills"
   add_foreign_key "results", "questions"
