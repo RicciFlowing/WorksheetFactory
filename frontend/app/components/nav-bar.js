@@ -5,6 +5,10 @@ export default Ember.Component.extend({
   actions: {
     logout() {
       this.get('session').invalidate();
+    },
+    session(){
+    Ember.Logger.log(this.get('session').get('data'));
     }
-  }
+  },
+  email: Ember.computed.alias('session.data.authenticated.email')
 });
