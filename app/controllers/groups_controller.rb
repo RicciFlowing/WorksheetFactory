@@ -1,18 +1,17 @@
 class GroupsController < ApplicationController
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
     render json: @groups
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = current_user.find(params[:id])
     render json: @group
   end
 
   def create
     @group = Group.new(group_params)
-    puts current_user
     @group.user = current_user
     if @group.save
       render json: @group, status: 200
@@ -22,7 +21,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
+    @group = current_user.find(params[:id])
     @group.destroy
     head :no_content
   end
