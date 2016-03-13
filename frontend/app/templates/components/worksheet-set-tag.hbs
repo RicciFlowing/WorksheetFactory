@@ -1,26 +1,25 @@
 
 <div class="panel-body">
-<button  {{action 'delete'}} class="btn btn-danger pull-right"> Delete Set</button>
+<button  {{action 'delete'}} class="right"> Delete Set</button>
 
 
-<form role="form" onsubmit="return false">
-  <button class= "btn" type="button" {{action "submit"}}>  {{fa-icon 'plus'}} Add a worksheet </button>
-</form>
 
-<ul class="list-unstyled">
+<ul id="worksheet-list">
+  <li id="add-button">
+    <form role="form" onsubmit="return false">
+      <button type="button" {{action "submit"}}>  <span id="plus-icon">+</span>  </button>
+    </form>
+  </li>
   {{#each sortedRemainingWorksheets as |worksheet|}}
     {{worksheet-short worksheet=worksheet}}
   {{/each}}
 </ul>
 
-
-
-
 <br>
 {{#if showArchive}}
 <button {{action "toggleArchive"}} class='btn btn-default'> {{fa-icon "angle-up"}} Hide Archive</button>
 <h3> Archive:</h3>
-  <ul class="list-unstyled">
+  <ul id="archive-list">
     {{#each sortedArchivedWorksheets as |worksheet|}}
       {{worksheet-short worksheet=worksheet}}
     {{/each}}
@@ -28,7 +27,7 @@
 {{/if}}
 
 {{#unless showArchive}}
-{{#if worksheet_set.hasArchivedWorksheets}}
+{{#if worksheetSet.hasArchivedWorksheets}}
   <button {{action "toggleArchive"}} class='btn btn-default'> {{fa-icon "angle-down"}} Show {{worksheet_set.archivedWorksheetCount}} archived Worksheet</button>
 {{/if}}
 {{/unless}}

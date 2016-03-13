@@ -1,0 +1,32 @@
+$group-content-width: 80%
+
+#group-title
+  text-align: center
+
+#group-nav
+  +center
+  max-width: $group-content-width
+  a
+    font-size: 20px
+    display: inline
+    padding: 10px
+    margin: 0 10px
+    color: $primary
+    border: solid
+    //border-bottom: none
+    border-width: 1px
+    border-radius: 2px
+
+  a.active
+    background-color: lighten($secondary, 20%)
+  a:hover
+    text-decoration: underline
+    //font-size: 22px
+
+.content-wrapper
+  +center
+  max-width: $group-content-width
+  margin-top: 20px
+  padding: 20px
+  background-color: lighten($secondary, 20%)
+  border-radius: 2px

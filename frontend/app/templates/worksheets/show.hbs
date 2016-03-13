@@ -1,7 +1,10 @@
-<h3>{{worksheet.title}} </h3>
 
-<div id="worksheetTable">
-  <table class="table">
+{{link-to 'Zurück' 'groups.show.worksheet_set' worksheet.worksheetSet.group.id worksheet.worksheetSet.id id='back-link'}}
+
+<h3 id="worksheet-title">{{worksheet.title}} </h3>
+
+
+<table id="worksheet-table">
     <thead>
       <td>
         #
@@ -18,7 +21,4 @@
       {{question-row question=question index=index}}
     {{/each}}
 </tbody>
-  </table>
-</div>
-
-{{#link-to 'groups.show.worksheet_set' worksheet.worksheetSet.group.id worksheet.worksheetSet.id}} {{fa-icon 'arrow-left'}} Zurück zu {{worksheet.worksheetSet.title}} {{/link-to}}
+</table>
