@@ -1,23 +1,9 @@
-<!-- <div class="row">
-  <div class="col-md-3">
-    <ul class="list-unstyled">
-      {{#group-list selected=selectedGroup as |list|}}
-          {{#each sortedGroups as |group|}}
-          {{group-item group=group list=list action='showGroup'}}
-        {{/each}}
-        {{new-item list=list action='newGroup'}}
-      {{/group-list}}
-    </ul>
-
-  </div>
-
-  <div class="col-md-9">
-     {{outlet}}
-  </div>
-</div> -->
-<div>
-  {{#each sortedGroups as |group|}}
-  {{link-to group.fullName 'groups.show' group.id}}
-  {{/each}}
-</div>
+<nav class="side-nav">
+  <h3> Klassen</h3>
+  <ul>
+    {{#each sortedGroups as |group|}}
+    <li> {{link-to group.fullName 'groups.show' group.id}} </li>
+    {{/each}}
+  </ul>
+</nav>
 {{outlet}}
