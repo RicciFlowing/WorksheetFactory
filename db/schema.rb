@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312100934) do
+ActiveRecord::Schema.define(version: 20160313100557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(version: 20160312100934) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "factories", ["user_id"], name: "index_factories_on_user_id", using: :btree
 
   create_table "factory_skill_associations", force: :cascade do |t|
     t.integer  "factory_id"
@@ -136,6 +139,7 @@ ActiveRecord::Schema.define(version: 20160312100934) do
 
   add_index "worksheets", ["worksheet_set_id"], name: "index_worksheets_on_worksheet_set_id", using: :btree
 
+  add_foreign_key "factories", "users"
   add_foreign_key "groups", "users"
   add_foreign_key "questions", "factory_skill_associations"
   add_foreign_key "questions", "skills"

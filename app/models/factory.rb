@@ -2,6 +2,7 @@ class Factory < ActiveRecord::Base
   has_many :factory_skill_associations
   has_many :worksheet_sets
   has_many :skills, through: :factory_skill_associations
+  belongs_to :user
 
   validates :name, length: {minimum: 4}
 
