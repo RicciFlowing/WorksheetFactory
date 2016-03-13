@@ -1,4 +1,4 @@
-class ResultsController < ApplicationController
+class ResultsController < AuthenticatedController
 
   before_action :set_result, only: [:show, :destroy, :update]
 

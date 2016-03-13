@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class QuestionsController < AuthenticatedController
   def index
     @questions = Question.all
     render json: @questions

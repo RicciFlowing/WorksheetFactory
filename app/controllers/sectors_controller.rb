@@ -1,4 +1,4 @@
-class SectorsController < ApplicationController
+class SectorsController < AuthenticatedController
   def index
     @sectors = Sector.all
     render json: @sectors

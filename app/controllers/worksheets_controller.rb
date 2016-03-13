@@ -1,4 +1,4 @@
-class WorksheetsController < ApplicationController
+class WorksheetsController < AuthenticatedController
   before_action :set_worksheet, only: [:show, :update, :destroy]
 
   def index

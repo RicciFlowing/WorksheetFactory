@@ -1,4 +1,4 @@
-class SkillsController < ApplicationController
+class SkillsController < AuthenticatedController
   def index
     @skills = Skill.all
     render json: @skills

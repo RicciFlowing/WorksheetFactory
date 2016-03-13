@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class GroupsController < AuthenticatedController
 
   def index
     @groups = current_user.groups

@@ -1,4 +1,4 @@
-class FactoriesController < ApplicationController
+class FactoriesController < AuthenticatedController
   def index
     @factories = Factory.all
     render json: @factories

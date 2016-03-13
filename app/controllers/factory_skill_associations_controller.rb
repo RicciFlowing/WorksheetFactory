@@ -1,4 +1,4 @@
-class FactorySkillAssociationsController < ApplicationController
+class FactorySkillAssociationsController < AuthenticatedController
 
 
   def create
