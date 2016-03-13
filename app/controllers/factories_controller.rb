@@ -1,11 +1,12 @@
 class FactoriesController < AuthenticatedController
   def index
-    @factories = Factory.all
+    @factories = current_user.factories
     render json: @factories
   end
 
   def create
     @factory = Factory.new(factory_params);
+    @factory.user = current_user
     if @factory.save
       render json: @factory, status: 200
     else
