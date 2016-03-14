@@ -1,11 +1,10 @@
-<div class="row">
-  {{#each sortedGroups as |group|}}
-  <div class="col-md-2">
-         {{link-to group.fullName 'groups.show' group.id}}
-  </div>
-  {{/each}}
-  <div class="col-md-2">
-      {{link-to 'Neue Lerngruppe' 'groups.new'}}
-  </div>
+<h2 id="group-title">Klassen</h2>
 
+<div class="content-wrapper">
+  <ul class="list-group">
+    {{#each sortedGroups as |group|}}
+     <li class="list-group-item inline"> {{link-to group.fullName 'groups.show' group.id class="big"}} </li>
+    {{/each}}
+      <li class="list-group-item" > {{link-to 'Neue Lerngruppe' 'groups.new' class="big"}} </li>
+  </ul>
 </div>
