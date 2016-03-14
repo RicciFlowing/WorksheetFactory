@@ -1,36 +1,25 @@
 <h2> Ergebnisse für {{worksheetSet.title}} </h2>
 
 <form>
+  <ul class="list-group">
+    {{#each results as |result|}}
+    <li class="list-group-item">
+      {{number-clicker  number=result.positive class="green"}}
+      <p class="big">
+        {{k-tex result.question.text}}
+      </p>
+      {{number-clicker  number=result.negative class="red"}}
+    </li>
+    {{/each}}
+  </ul>
 
-<div class="row">
-  <div class="col-md-9">
-    <ul class="list-group">
-      {{#each results as |result index|}}
-      <li class="list-group-item flex-container space-between">
-        {{number-clicker  number=result.positive class="green"}}
-        <div class="margin-side">
-          <h4> {{index}}. Frage </h4>
-          <p>
-             {{k-tex result.question.text}}
-          </p>
-        </div>
-        {{number-clicker  number=result.negative class="red"}}
-      </li>
+  <ul>
+    {{#each worksheetSet.worksheets as |sheet|}}
+    {{link-to sheet.title 'groups.show.worksheet_set.results'  sheet.id class="list-group-item"}}
+    {{/each}}
+  </ul>
 
-      {{/each}}
-    </ul>
-  </div>
 
-  <div class="col-md-3">
-    <ul class="list-group">
-      {{#each worksheetSet.worksheets as |sheet|}}
-           {{link-to sheet.title 'groups.show.worksheet_set.results'  sheet.id class="list-group-item"}}
-      {{/each}}
-    </ul>
-  </div>
-</div>
+  <button type="button" {{action 'submit'}}> Ergebnisse erfassen </button>
 
-<div class="form-group">
-  <button type="button" {{action 'submit'}} class='btn btn-default'> Ergebnisse erfassen </button>
-</div>
 </form>

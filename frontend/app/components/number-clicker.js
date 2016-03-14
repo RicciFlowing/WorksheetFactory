@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNameBindings: ['class'],
-  classNames: ['form-group', 'form-inline', 'clicker-form'],
-  tagName: 'form',
+  classNames: ['number-clicker'],
+  tagName: 'div',
   minimum: 0,
   actions:{
     add(summand){
