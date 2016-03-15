@@ -1,6 +1,6 @@
 <header>
   <nav id="main-nav">
-    <a class="logo" href="#">Worksheet Factory</a>
+    {{link-to 'Worksheet Factory' 'index' class="logo"}}
     <ul id="main-nav-links">
         {{#if session.isAuthenticated}}
             <li>{{#link-to 'groups.index'}} Klassen {{/link-to}}</li>
