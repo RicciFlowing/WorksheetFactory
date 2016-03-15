@@ -1,4 +1,25 @@
 .row
-  width: 90%
+  width: 100%
+  display: flex
+  align-content: space-between
 
+.col, .col-4, .col-6, .col-8
+  flex: 0 0 auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
 .col
+  flex-grow: 1
+  flex-basis: 0
+
+.col-4
+  flex-basis: 33.33%
+  max-width: 33.33%
+
+
+.col-6
+  flex-basis: 50%
+  max-width: 50%
+
+.col-8
+  flex-basis: 66.66%
+  max-width: 66.66%
