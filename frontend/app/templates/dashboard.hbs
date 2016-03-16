@@ -1,5 +1,23 @@
 <h2>Dashboard</h2>
 
-<p>Peter Parker is Spider-Man</p>
+<p>Deine Klassen</p>
+
+<ul>
+  {{#each groups as |group|}}
+    <li> {{link-to group.fullName 'groups.show' group}} </li>
+  {{/each}}
+</ul>
+
+<p>Deine Fabriken</p>
+
+<ul>
+  {{#each factories as |factory|}}
+    <li> {{factory.name}} </li>
+  {{/each}}
+</ul>
 
 {{outlet}}
+
+<p>
+  Ändere dein Passwort
+</p>

@@ -4,7 +4,7 @@
     <ul id="main-nav-links">
         {{#if session.isAuthenticated}}
             <li>{{#link-to 'groups.index'}} Klassen {{/link-to}}</li>
-          <li>  <a href='dashboard'>{{email}} </a>  </li>
+          <li>  {{link-to email 'dashboard' }}  </li>
           <li><a {{action 'logout'}}>Logout</a></li>
          {{else}}
            <li> {{#link-to 'login'}}Login{{/link-to}} </li>

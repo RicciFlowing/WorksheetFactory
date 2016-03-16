@@ -48,6 +48,14 @@ class Template
       values.each do |key, value|
         result = result.gsub(/{{\s*#{key}\s*}}/, value.to_s)
       end
-      result
+      test_for_incomplete_insertion(result)
+    end
+
+    def test_for_incomplete_insertion(txt)
+      has_curlys = txt.include? '{{' || txt.include? '}}'
+      if has_curlys
+        p 'Warning: Template contains variable not definded'
+      end
+      txt
     end
 end
