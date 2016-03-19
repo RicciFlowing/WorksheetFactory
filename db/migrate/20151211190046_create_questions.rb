@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.string :solution
       t.belongs_to :skill, index: true, foreign_key: true
       t.belongs_to :factory_skill_association, index: true, foreign_key: true
-
+      t.belongs_to :worksheet, index: true, foreign_key: true
       t.timestamps null: false
     end
   end

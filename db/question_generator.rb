@@ -52,7 +52,7 @@ class Template
     end
 
     def test_for_incomplete_insertion(txt)
-      has_curlys = txt.include? '{{' || txt.include? '}}'
+      has_curlys = txt.include?('{{') || txt.include?('}}')
       if has_curlys
         p 'Warning: Template contains variable not definded'
       end

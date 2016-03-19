@@ -52,12 +52,14 @@ ActiveRecord::Schema.define(version: 20160319105317) do
     t.string   "solution"
     t.integer  "skill_id"
     t.integer  "factory_skill_association_id"
+    t.integer  "worksheet_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
 
   add_index "questions", ["factory_skill_association_id"], name: "index_questions_on_factory_skill_association_id", using: :btree
   add_index "questions", ["skill_id"], name: "index_questions_on_skill_id", using: :btree
+  add_index "questions", ["worksheet_id"], name: "index_questions_on_worksheet_id", using: :btree
 
   create_table "results", force: :cascade do |t|
     t.integer  "positive"
@@ -98,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160319105317) do
   add_index "statistics", ["group_id"], name: "index_statistics_on_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
+    t.string   "authentication_token"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -110,7 +113,6 @@ ActiveRecord::Schema.define(version: 20160319105317) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -151,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160319105317) do
   add_foreign_key "groups", "users"
   add_foreign_key "questions", "factory_skill_associations"
   add_foreign_key "questions", "skills"
+  add_foreign_key "questions", "worksheets"
   add_foreign_key "results", "questions"
   add_foreign_key "results", "worksheets"
   add_foreign_key "skills", "sectors"

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :factories
 
   def ensure_authentication_token
-    if authentication_token.blank?
+    if self.authentication_token.blank?
       self.authentication_token = generate_authentication_token
     end
   end
