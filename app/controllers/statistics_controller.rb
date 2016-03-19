@@ -1,7 +1,12 @@
 class StatisticsController < ApplicationController
 
 def index
-  @statistic = Statistic.all
+  @statistics = Statistic.all
+  render json: @statistics
+end
+
+def show
+  @statistic = Statistic.find(params[:id])
   render json: @statistic
 end
 

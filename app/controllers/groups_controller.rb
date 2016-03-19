@@ -12,8 +12,9 @@ class GroupsController < AuthenticatedController
 
   def create
     @group = Group.new(group_params)
-    @group.user = current_user
+    @group.user = current_user  
     if @group.save
+      Statistic.create({group: @group})
       render json: @group, status: 200
     else
       render json: @group.errors, status: 400
