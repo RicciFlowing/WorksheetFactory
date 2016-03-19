@@ -2,7 +2,7 @@
 
 <p>Deine Klassen</p>
 
-<ul>
+<ul class="unstyled-list">
   {{#each groups as |group|}}
     <li> {{link-to group.fullName 'groups.show' group}} </li>
   {{/each}}
@@ -10,7 +10,7 @@
 
 <p>Deine Fabriken</p>
 
-<ul>
+<ul class="unstyled-list">
   {{#each factories as |factory|}}
     <li> {{factory.name}} </li>
   {{/each}}
