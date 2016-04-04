@@ -1,7 +1,7 @@
 class WorksheetSet < ActiveRecord::Base
   belongs_to :factory
   belongs_to :group
-  has_many   :worksheets
+  has_many   :worksheets, dependent: :destroy
   has_many   :results, through: :worksheets
 
   validates :factory_id, presence: true

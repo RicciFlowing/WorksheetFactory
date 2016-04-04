@@ -8,7 +8,8 @@ class SectorSeed
   end
 
   def create
-    sector  = ::Sector.create(title: @title, grade: @grade)
+    sector =  ::Sector.where(title: @title).first
+    sector  = ::Sector.create(title: @title, grade: @grade) if sector.nil?
     sector.skills << @skills
     sector.save
   end
@@ -46,7 +47,8 @@ class SkillSeed
   end
 
   def create
-    skill  = ::Skill.create(name: @title )
+    skill  = ::Skill.where(name: @title ).first || ::Skill.create(name: @title )
+    skill.questions.destroy_all
     skill.questions << @questions
     skill.save
     skill

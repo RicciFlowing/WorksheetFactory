@@ -8,6 +8,9 @@ class Skill < ActiveRecord::Base
   validates :name, uniqueness: true
 
   def get_question
-    self.questions.offset(rand(self.questions.count)).first
+    question = self.questions.offset(rand(self.questions.count)).first
+    result = question.dup
+    result.skill = self
+    result
   end
 end
